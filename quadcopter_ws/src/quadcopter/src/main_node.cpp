@@ -7,6 +7,8 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/video/tracking.hpp>
+#include <opencv2/features2d/features2d.hpp>
+#include <opencv2/tracking.hpp>
 
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
@@ -40,10 +42,10 @@ void target_camshift(Mat input) {
     imshow("Sub Image", rectImage);
     cvtColor(rectImage, targetImageHSV, CV_RGB2HSV);
     inRange(targetImageHSV, Scalar(100, 43, 46), Scalar(124, 255, 255), targetImageHSV);
-    imshow("targetImageHSV", targetImageHSV);
+//    imshow("targetImageHSV", targetImageHSV);
     calcHist(&targetImageHSV, 2, channels, Mat(), dstHist, 1, &histSize, &histRange, true, false);
     normalize(dstHist, dstHist, 0, 255, CV_MINMAX);
-    imshow("dstHist", dstHist);
+//    imshow("dstHist", dstHist);
 
 
     Mat imageHSV;
@@ -66,8 +68,8 @@ void target_camshift(Mat input) {
 //    cout<<pt.back ()<<endl;
 
     geometry_msgs::Twist vel;
-    vel.linear.x = (float)(-input.cols/2 + pt.back().x);
-    vel.linear.y = (float)(-input.rows/2 + pt.back().y);
+    vel.linear.x = (float) (-input.cols / 2 + pt.back().x);
+    vel.linear.y = (float) (-input.rows / 2 + pt.back().y);
     target_vel.publish(vel);
 
     imshow("track", input);
@@ -101,7 +103,6 @@ void target_camshift(Mat input) {
 //            }
 //        }
 //        imshow("跟踪木头人",image);
-
 
 }
 
@@ -139,6 +140,62 @@ void target_camshift(Mat input) {
 //    }
 //}
 
+Rect2d roi;
+Ptr<Tracker> tracker;
+bool isInitializeTracker = false;
+void trackTargetOpenCVInit(Mat input) {
+//    tracker = TrackerKCF::create();
+//    tracker = TrackerMIL::create();
+    tracker = TrackerTLD::create();
+
+    namedWindow("output", WINDOW_AUTOSIZE);
+    roi = selectROI("output", input);
+    if (roi.width == 0 || roi.height == 0) {
+        return;
+    }
+    //跟踪
+    tracker->init(input, roi);
+}
+
+void trackTargetOpenCVAPI(Mat input) {
+    if(isInitializeTracker==false)
+    {
+        trackTargetOpenCVInit(input);
+        isInitializeTracker=true;
+    }
+
+    tracker->update(input, roi);
+    rectangle(input, roi, Scalar(255, 0, 0), 2, 8, 0);
+    imshow("output", input);
+
+
+}
+
+void trackTargetORB(Mat input) {
+    //读取图像
+    Mat img = input;
+    //定义特征点向量和描述子
+    vector<KeyPoint> keypoints_1;
+    Mat descriptor;
+    //ORB特征提取器
+    Ptr<ORB> orb = ORB::create();
+    //检测特征点
+    orb->detect(img, keypoints_1);
+    //计算描述子
+    orb->compute(img, keypoints_1, descriptor);
+    //画出特征点
+    Mat outimg;
+    drawKeypoints(img, keypoints_1, outimg, Scalar::all(-1), DrawMatchesFlags::DEFAULT);
+    imshow("ORB", outimg);
+
+    cout << "描述子维度：" << descriptor.size() << endl;
+    cout << "特征点数：" << keypoints_1.size() << endl;
+    Mat row_data = descriptor.rowRange(1, 2).clone();
+    cout << "其中一个描述子：" << row_data << endl;
+
+    waitKey(1);
+}
+
 
 void floorCamera_cb(const sensor_msgs::ImageConstPtr &floorImage) {
     cv_bridge::CvImageConstPtr cv_ptr = cv_bridge::toCvShare(floorImage, "bgr8");
@@ -150,7 +207,7 @@ void floorCamera_cb(const sensor_msgs::ImageConstPtr &floorImage) {
      */
     flip(img_floor, img_floor, 0);
     imshow("quadcopter", img_floor);
-    target_camshift(img_floor);
+    trackTargetOpenCVAPI(img_floor);
     waitKey(1);
 }
 
@@ -165,7 +222,6 @@ int main(int argc, char **argv) {
     target_vel = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
 
 //    setMouseCallback("跟踪木头人",onMouse);
-
     while (ros::ok()) {
 
         ros::spin();
