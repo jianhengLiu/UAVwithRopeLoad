@@ -37,16 +37,13 @@ Mat dstHist;
 Rect rect(100, 100, 50, 50);
 vector<Point> pt; //保存目标轨迹
 void onMouse(int event, int x, int y, int flags, void *ustc); //鼠标回调函数
-void target_camshift(Mat input) {
+Point2d targetTargetCamshift(Mat input) {
     Mat rectImage = input(rect); //子图像显示
-    imshow("Sub Image", rectImage);
+//    imshow("Sub Image", rectImage);
     cvtColor(rectImage, targetImageHSV, CV_RGB2HSV);
     inRange(targetImageHSV, Scalar(100, 43, 46), Scalar(124, 255, 255), targetImageHSV);
-//    imshow("targetImageHSV", targetImageHSV);
     calcHist(&targetImageHSV, 2, channels, Mat(), dstHist, 1, &histSize, &histRange, true, false);
     normalize(dstHist, dstHist, 0, 255, CV_MINMAX);
-//    imshow("dstHist", dstHist);
-
 
     Mat imageHSV;
     Mat calcBackImage;
@@ -60,12 +57,9 @@ void target_camshift(Mat input) {
     normalize(dstHist, dstHist, 0.0, 1.0, NORM_MINMAX);   //归一化
     rectangle(input, rect, Scalar(255, 0, 0), 3);    //目标绘制
     pt.push_back(Point(rect.x + rect.width / 2, rect.y + rect.height / 2));
-//    for (int i = 0; i < pt.size() - 1; i++) {
-//        line(input, pt[i], pt[i + 1], Scalar(0, 255, 0), 2.5);
-//    }
+
     circle(input, pt.back(), 10, Scalar(0, 255, 0), -1);
 
-//    cout<<pt.back ()<<endl;
 
     geometry_msgs::Twist vel;
     vel.linear.x = (float) (-input.cols / 2 + pt.back().x);
@@ -74,6 +68,8 @@ void target_camshift(Mat input) {
 
     imshow("track", input);
 
+    Point2d returnTarget = pt.back();
+    return returnTarget;
 
 //    if(!leftButtonDownFlag) //判定鼠标左键没有按下，采取播放视频，否则暂停
 //        {
@@ -140,13 +136,58 @@ void target_camshift(Mat input) {
 //    }
 //}
 
+Point2f refineTargetContours(Mat input, Rect inputRect) {
+    if (inputRect.x > 0 && inputRect.y > 0 && inputRect.x + inputRect.width < input.cols &&
+        inputRect.y + inputRect.height < input.rows) {
+
+        Mat grayImage = input(inputRect);
+
+        cvtColor(grayImage, grayImage, COLOR_BGR2GRAY);
+        blur(grayImage, grayImage, Size(3, 3));
+        Canny(grayImage, grayImage, 100, 200);
+        vector<vector<Point> > contours;
+        vector<Vec4i> hierarchy;
+        findContours(grayImage, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+//        vector<Moments> mu(contours.size());
+//        for(int i=0;i<contours.size();i++)
+//        {
+//            mu[i] = moments(contours[i],false);
+//        }
+
+
+        Point2f returnPoint;
+//    float tempRadius;
+
+        for (int i = 0; i < contours.size(); i++) {
+//            cout << contourArea(contours[i]) << endl;
+//
+//            if (contourArea(contours[i]) > 1000 && contourArea(contours[i]) < 3000) {
+//            drawContours(grayImage,contours,i,Scalar(255));
+            RotatedRect returnRect = minAreaRect(contours[i]);
+            imshow("rectImage", grayImage);
+            if(returnRect.size.area()>1000){
+                circle(grayImage, returnRect.center, 2, Scalar(255), -1);
+
+                return returnRect.center;
+            }
+
+        }
+
+    }
+}
+
 Rect2d roi;
 Ptr<Tracker> tracker;
 bool isInitializeTracker = false;
+
 void trackTargetOpenCVInit(Mat input) {
-//    tracker = TrackerKCF::create();
+    TrackerKCF::Params params;
+    params.detect_thresh = 0.3f;
+    tracker = TrackerKCF::create(params);
 //    tracker = TrackerMIL::create();
-    tracker = TrackerTLD::create();
+//    tracker = TrackerTLD::create();
+//    tracker = TrackerMOSSE::create();
+
 
     namedWindow("output", WINDOW_AUTOSIZE);
     roi = selectROI("output", input);
@@ -158,16 +199,36 @@ void trackTargetOpenCVInit(Mat input) {
 }
 
 void trackTargetOpenCVAPI(Mat input) {
-    if(isInitializeTracker==false)
-    {
+    if (isInitializeTracker == false) {
         trackTargetOpenCVInit(input);
-        isInitializeTracker=true;
+        isInitializeTracker = true;
     }
 
     tracker->update(input, roi);
-    rectangle(input, roi, Scalar(255, 0, 0), 2, 8, 0);
-    imshow("output", input);
 
+//    imshow("output", input);
+
+    Point2d targetPoint = roi.tl();
+
+//    无优化
+    targetPoint.x += roi.width / 2;
+    targetPoint.y += roi.height / 2;
+
+//  有优化
+//    Rect tempRect = Rect(roi.x, roi.y, roi.width, roi.height);
+//    Point2f tempPoint = refineTargetContours(input, tempRect);
+//    targetPoint.x += tempPoint.x;
+//    targetPoint.y += tempPoint.y;
+
+    rectangle(input, roi, Scalar(255, 0, 0), 2, 8, 0);
+    circle(input, targetPoint, 10, Scalar(0, 255, 0), -1);
+
+    geometry_msgs::Twist vel;
+    vel.linear.x = (float) (-input.cols / 2 + targetPoint.x);
+    vel.linear.y = (float) (-input.rows / 2 + targetPoint.y);
+    target_vel.publish(vel);
+
+    imshow("output", input);
 
 }
 
@@ -206,7 +267,8 @@ void floorCamera_cb(const sensor_msgs::ImageConstPtr &floorImage) {
      * Negative value (for example, -1) means flipping around both axes.
      */
     flip(img_floor, img_floor, 0);
-    imshow("quadcopter", img_floor);
+//    imshow("quadcopter", img_floor);
+//    targetTargetCamshift(img_floor);
     trackTargetOpenCVAPI(img_floor);
     waitKey(1);
 }
