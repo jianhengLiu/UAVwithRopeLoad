@@ -268,8 +268,8 @@ void floorCamera_cb(const sensor_msgs::ImageConstPtr &floorImage) {
      */
     flip(img_floor, img_floor, 0);
 //    imshow("quadcopter", img_floor);
-    targetTargetCamshift(img_floor);
-//    trackTargetOpenCVAPI(img_floor);
+//    targetTargetCamshift(img_floor);
+    trackTargetOpenCVAPI(img_floor);
     waitKey(1);
 }
 
