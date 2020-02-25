@@ -50,9 +50,11 @@
 
 # 技术研究
 
-# 1. 聚类算法
+# 目标跟踪
 
-## 1.1 Meanshift
+## 1. 聚类算法
+
+### 1.1 Meanshift
 
 https://docs.opencv.org/master/d7/d00/tutorial_meanshift.html
 
@@ -70,7 +72,7 @@ https://blog.csdn.net/dcrmg/article/details/52771372
 
 ![meanshift_result.jpg](Research.assets/meanshift_result.jpg)
 
-## 1.2 Camshift
+### 1.2 Camshift
 
 您是否密切关注了最后结果？这儿存在一个问题。无论汽车离相机很近或非常近，我们的窗口始终具有相同的大小。这是不好的。我们需要根据目标的大小和旋转来调整窗口大小。该解决方案再次来自“ OpenCV Labs”，它被称为Gary布拉德斯基（Gary Bradsky）在其1998年的论文“用于感知用户界面中的计算机视觉面部跟踪”中发表的CAMshift（连续自适应均值偏移）[[27\]](https://docs.opencv.org/master/d0/de3/citelist.html#CITEREF_Bradski98)。
 
@@ -82,7 +84,7 @@ $s = 2 * \sqrt{M_{00}/256}$
 
 ![camshift_face.gif](Research.assets/camshift_face.gif)
 
-### OpenCV下使用方法
+#### OpenCV下使用方法
 
 opencv网站有源码，有需要可参考
 
@@ -205,13 +207,13 @@ void onMouse(int event,int x,int y,int flags,void *ustc)
 
 
 
-# 2. 颜色处理
+## 2. 颜色处理
 
 OpenCV下HSV空间
 
 ![image-20191215182039211](Research.assets/image-20191215182039211.png)
 
-# 3. TLD(Tracking-Learning-Detection)
+## 3. TLD(Tracking-Learning-Detection)
 
 TLD是一个用于针对视频中未知物体长期跟踪的架构。简单来说，TLD算法由三部分组成：跟踪模块、检测模块、学习模块。跟踪模块是观察帧与帧之间的目标的动向。检测模块是把每张图看成独立的，然后去定位。学习模块将根据跟踪模块的结果对检测模块的错误进行评估，生成训练样本来对检测模块的目标模型进行更新，避免以后出现类似错误。
 
@@ -227,7 +229,7 @@ TLD技术采用跟踪和检测相结合的策略，是一种自适应的、可�
 
 
 
-# 三、TLD算法实现
+## TLD算法实现
 
 https://www.cnblogs.com/huty/p/8519325.html
 
@@ -235,7 +237,7 @@ https://www.cnblogs.com/huty/p/8519325.html
 
 ![img](Research.assets/20150715210738728)
 
-## 1. detector 检测器的实现
+### 1. detector 检测器的实现
 
 检测器包括三个：一是方差检测器；二是随机深林；三是最近邻分类器；
 
@@ -303,7 +305,7 @@ step 5  最近邻分类器的训练和测试
 
 
 
-## 2. 中值流跟踪器的实现
+### 2. 中值流跟踪器的实现
 
 
 
@@ -333,7 +335,7 @@ TLD算法的跟踪模块（Tracker），是一种在名为中值流跟踪（Medi
 
 
 
-## 3. 综合器的实现
+### 3. 综合器的实现
 
 综合器（Integrator）把检测器和跟踪器得到的目标框予以综合，并作为TLD最后的输出。如果跟踪器或者检测器都没有得到目标框，那么就认定当前帧中被跟踪目标没有出现的，否则，综合器将具有最大保守相似度的图像片作为最终的目标框所在位置。 
 
@@ -348,7 +350,7 @@ if(bbOverlap(tbb,dbb[i])>0.7)cx += dbb[i].x;……
 bbnext.x= cvRound((float)(10*tbb.x+cx)/(float)(10+close_detections));……
 （6）另外，如果跟踪器没有跟踪到目标，但是检测器检测到了一些可能的目标box，那么同样对其进行聚类，但只是简单的将聚类的cbb[0]作为新的跟踪目标box
 
-## 4. 学习模块的实现
+### 4. 学习模块的实现
 
 
 
@@ -371,3 +373,9 @@ Learning实际上就是重新组织正负样本对随机森林和最近邻分类
 结论：TLD可能效率仍不够高，存在滞后性
 
 ​			KCF帧率较高，滞后性不明显，但对于丢失的目标无法很好的找回，鲁棒性较差
+
+# 负载稳定
+
+## 1. 欧拉-拉格朗日方程
+
+https://zhuanlan.zhihu.com/p/45912984

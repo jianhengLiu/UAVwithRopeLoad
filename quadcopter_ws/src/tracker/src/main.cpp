@@ -31,14 +31,13 @@ cv::Point2f refineTracker(cv::Mat input, int times) {
     }
 //    imshow("inputUp", input);
 
-//    if (inputRect.x > 0 && inputRect.y > 0 && inputRect.x + inputRect.width < input.cols &&
-//        inputRect.y + inputRect.height < input.rows) {
-
     cvtColor(input, input, cv::COLOR_BGR2GRAY);
-    cv::threshold(input, input, 200, 255, cv::THRESH_BINARY);
-    blur(input, input, cv::Size(3, 3));
-    Canny(input, input, 80, 160);
+    cout<<input.at<int>(input.cols/2,input.rows/2)<<endl;
+    cv::threshold(input, input, input.at<int>(input.cols/2,input.rows/2)-10, 255, cv::THRESH_BINARY);
+//    blur(input, input, cv::Size(3, 3));
+//    Canny(input, input, 100, 200);
 
+//    imshow("rectImage", input);
     vector<vector<cv::Point> > contours;
     vector<cv::Vec4i> hierarchy;
     findContours(input, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
@@ -56,7 +55,7 @@ cv::Point2f refineTracker(cv::Mat input, int times) {
             cv::circle(input, returnPoint, 2, cv::Scalar(255), -1);
             returnPoint.x /= pow(2, times);
             returnPoint.y /= pow(2, times);
-//            imshow("rectImage", input);
+            imshow("rectImage", input);
             return returnPoint;
         }
     }
@@ -79,7 +78,7 @@ void trackerStapleInit(cv::Mat input) {
 
 bool isTrackerStapleInit = false;
 std::vector<cv::Rect_<float>> result_rects;
-bool show_visualization = false;
+bool show_visualization = true;
 double calculateTime = 0;
 
 void trackerStaple(cv::Mat input) {
@@ -95,11 +94,15 @@ void trackerStaple(cv::Mat input) {
     result_rects.push_back(location);
 
     cv::Point2f targetPoint = location.tl();
-//    cv::Point2f returnPoint = refineTracker(input(location), 6);
-//    targetPoint += returnPoint;
-    targetPoint.x += location.width / 2;
-    targetPoint.y += location.height / 2;
-//    cout << targetPoint << endl;
+    if (location.x > 0 && location.y > 0 && location.x + location.width < input.cols &&
+        location.y + location.height < input.rows) {
+        cv::Point2f returnPoint = refineTracker(input(location), 4);
+        targetPoint += returnPoint;
+    } else {
+        targetPoint.x += location.width / 2;
+        targetPoint.y += location.height / 2;
+        ROS_ERROR("Target is out of field!");
+    }
 
     int64 toc = cv::getTickCount() - tic;
     calculateTime += toc;
