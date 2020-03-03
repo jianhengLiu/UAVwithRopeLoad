@@ -40,7 +40,7 @@ void onMouse(int event, int x, int y, int flags, void *ustc); //鼠标回调函�
 Point2d targetTargetCamshift(Mat input) {
     Mat rectImage = input(rect); //子图像显示
 //    imshow("Sub Image", rectImage);
-    cvtColor(rectImage, targetImageHSV, CV_RGB2HSV);
+    cvtColor(input, targetImageHSV, CV_RGB2HSV);
     inRange(targetImageHSV, Scalar(100, 43, 46), Scalar(124, 255, 255), targetImageHSV);
     calcHist(&targetImageHSV, 2, channels, Mat(), dstHist, 1, &histSize, &histRange, true, false);
     normalize(dstHist, dstHist, 0, 255, CV_MINMAX);
@@ -102,39 +102,6 @@ Point2d targetTargetCamshift(Mat input) {
 
 }
 
-//鼠标回调函数
-//void onMouse(int event,int x,int y,int flags,void *ustc)
-//{
-//    if(event==CV_EVENT_LBUTTONDOWN)
-//    {
-//        leftButtonDownFlag=true; //标志位
-//        originalPoint=Point(x,y);  //设置左键按下点的矩形起点
-//        processPoint=originalPoint;
-//    }
-//    if(event==CV_EVENT_MOUSEMOVE&&leftButtonDownFlag)
-//    {
-//        imageCopy=image.clone();
-//        processPoint=Point(x,y);
-//        if(originalPoint!=processPoint)
-//        {
-//            //在复制的图像上绘制矩形
-//            rectangle(imageCopy,originalPoint,processPoint,Scalar(255,0,0),2);
-//        }
-//        imshow("跟踪木头人",imageCopy);
-//    }
-//    if(event==CV_EVENT_LBUTTONUP)
-//    {
-//        leftButtonDownFlag=false;
-//        rect=Rect(originalPoint,processPoint);
-//        rectImage=image(rect); //子图像显示
-//        imshow("Sub Image",rectImage);
-//        cvtColor(rectImage,targetImageHSV,CV_RGB2HSV);
-//        imshow("targetImageHSV",targetImageHSV);
-//        calcHist(&targetImageHSV,2,channels,Mat(),dstHist,1,&histSize,&histRange,true,false);
-//        normalize(dstHist,dstHist,0,255,CV_MINMAX);
-//        imshow("dstHist",dstHist);
-//    }
-//}
 
 Point2f refineTargetContours(Mat input, Rect inputRect) {
     if (inputRect.x > 0 && inputRect.y > 0 && inputRect.x + inputRect.width < input.cols &&
@@ -268,8 +235,8 @@ void floorCamera_cb(const sensor_msgs::ImageConstPtr &floorImage) {
      */
     flip(img_floor, img_floor, 0);
 //    imshow("quadcopter", img_floor);
-//    targetTargetCamshift(img_floor);
-    trackTargetOpenCVAPI(img_floor);
+    targetTargetCamshift(img_floor);
+//    trackTargetOpenCVAPI(img_floor);
     waitKey(1);
 }
 

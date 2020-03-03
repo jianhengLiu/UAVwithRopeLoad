@@ -17,6 +17,8 @@ find_package(catkin REQUIRED COMPONENTS
         )
 
 find_package(OpenCV REQUIRED)
+find_package(Eigen3 REQUIRED)
+
 
 include_directories(
         # include
@@ -42,6 +44,13 @@ target_link_libraries(staple_tracker
         ${OpenCV_LIBS}
         )
 
+add_library(antiSwing
+        include/antiSwing.h
+        src/antiSwing.cpp)
+target_link_libraries(antiSwing
+        ${catkin_LIBRARIES}
+        )
+
 add_executable(tracker
         ${SRC_LIST})
 target_link_libraries(tracker
@@ -49,4 +58,5 @@ target_link_libraries(tracker
         ${OpenCV_LIBS}
         fhog
         staple_tracker
+        antiSwing
         )

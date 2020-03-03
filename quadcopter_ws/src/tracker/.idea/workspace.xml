@@ -2,43 +2,44 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_eus" />
       <config projectName="tracker" targetName="download_extra_data" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="fhog" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="run_tests" />
-      <config projectName="tracker" targetName="staple_tracker" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="gmock_main" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_py" />
-      <config projectName="tracker" targetName="clean_test_results" />
-      <config projectName="tracker" targetName="tracker" />
-      <config projectName="tracker" targetName="gtest" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_cpp" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="gmock" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="tests" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="doxygen" />
-      <config projectName="tracker" targetName="gtest_main" />
       <config projectName="tracker" targetName="roscpp_generate_messages_lisp" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_py" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="gmock" />
+      <config projectName="tracker" targetName="staple_tracker" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_cpp" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_cpp" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_py" />
       <config projectName="tracker" targetName="geometry_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="antiSwing" />
+      <config projectName="tracker" targetName="fhog" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_cpp" />
       <config projectName="tracker" targetName="roscpp_generate_messages_eus" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_cpp" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_py" />
+      <config projectName="tracker" targetName="tests" />
+      <config projectName="tracker" targetName="clean_test_results" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_py" />
+      <config projectName="tracker" targetName="doxygen" />
+      <config projectName="tracker" targetName="tracker" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="gtest" />
       <config projectName="tracker" targetName="std_msgs_generate_messages_py" />
+      <config projectName="tracker" targetName="gmock_main" />
+      <config projectName="tracker" targetName="run_tests" />
+      <config projectName="tracker" targetName="gtest_main" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_lisp" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -57,6 +58,13 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="NewLua" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="1Y46jTXSw6zjrAJec3TFpLwwJmr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -67,8 +75,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../CMakeLists.txt" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/include" />
+    </key>
   </component>
   <component name="RunManager" selected="CMake Application.tracker">
+    <configuration name="antiSwing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tracker" TARGET_NAME="antiSwing" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="clean_test_results" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="tracker" TARGET_NAME="clean_test_results" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -255,6 +275,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="CMake Application.antiSwing" />
       <item itemvalue="CMake Application.clean_test_results" />
       <item itemvalue="CMake Application.download_extra_data" />
       <item itemvalue="CMake Application.doxygen" />
@@ -308,6 +329,14 @@
       <workItem from="1582189745014" duration="834000" />
       <workItem from="1582203762290" duration="110000" />
       <workItem from="1582384167739" duration="3048000" />
+      <workItem from="1582633897840" duration="6315000" />
+      <workItem from="1582702380512" duration="14109000" />
+      <workItem from="1582872113683" duration="19184000" />
+      <workItem from="1582974566356" duration="7416000" />
+      <workItem from="1583057158381" duration="16280000" />
+      <workItem from="1583157928838" duration="7173000" />
+      <workItem from="1583228128288" duration="8298000" />
+      <workItem from="1583240556858" duration="1039000" />
     </task>
     <servers />
   </component>
@@ -319,25 +348,71 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="849" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1582189659959" />
+    <state x="877" y="243" width="228" height="588" key="#xdebugger.XInspectDialog" timestamp="1583164400526">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="877" y="243" width="228" height="588" key="#xdebugger.XInspectDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1583164400526" />
     <state x="1185" y="311" key="FileChooserDialogImpl" timestamp="1582203868804">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="1185" y="311" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1582203868804" />
-    <state width="1803" height="194" key="GridCell.Tab.0.bottom" timestamp="1582389809695">
+    <state width="1803" height="277" key="GridCell.Tab.0.bottom" timestamp="1583239722195">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="194" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1582389809695" />
-    <state width="1803" height="194" key="GridCell.Tab.0.center" timestamp="1582389809694">
+    <state width="1803" height="380" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541874" />
+    <state width="1803" height="277" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1583239722195" />
+    <state width="1803" height="277" key="GridCell.Tab.0.center" timestamp="1583239722194">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="194" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1582389809694" />
-    <state width="1803" height="194" key="GridCell.Tab.0.left" timestamp="1582389809694">
+    <state width="1803" height="380" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541874" />
+    <state width="1803" height="277" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1583239722194" />
+    <state width="1803" height="277" key="GridCell.Tab.0.left" timestamp="1583239722193">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="194" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1582389809694" />
-    <state width="1803" height="194" key="GridCell.Tab.0.right" timestamp="1582389809695">
+    <state width="1803" height="380" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541873" />
+    <state width="1803" height="277" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1583239722193" />
+    <state width="1803" height="277" key="GridCell.Tab.0.right" timestamp="1583239722195">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="194" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1582389809695" />
+    <state width="1803" height="380" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541874" />
+    <state width="1803" height="277" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1583239722195" />
+    <state width="1803" height="363" key="GridCell.Tab.1.bottom" timestamp="1583165106530">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="363" key="GridCell.Tab.1.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1583165106530" />
+    <state width="1803" height="363" key="GridCell.Tab.1.center" timestamp="1583165106529">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="363" key="GridCell.Tab.1.center/65.24.1855.1056@65.24.1855.1056" timestamp="1583165106529" />
+    <state width="1803" height="363" key="GridCell.Tab.1.left" timestamp="1583165106529">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="363" key="GridCell.Tab.1.left/65.24.1855.1056@65.24.1855.1056" timestamp="1583165106529" />
+    <state width="1803" height="363" key="GridCell.Tab.1.right" timestamp="1583165106530">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="363" key="GridCell.Tab.1.right/65.24.1855.1056@65.24.1855.1056" timestamp="1583165106530" />
+    <state x="65" y="-4" width="1855" height="1084" key="SettingsEditor" timestamp="1582875551308">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="65" y="-4" width="1855" height="1084" key="SettingsEditor/65.24.1855.1056@65.24.1855.1056" timestamp="1582875551308" />
+    <state x="656" y="246" key="run.anything.popup" timestamp="1582874119246">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="656" y="246" key="run.anything.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1582874119246" />
+    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup" timestamp="1583162967907">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1583162967907" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="cOrientation_world" language="ObjectiveC" />
+        <watch expression="cOrientation_world" language="ObjectiveC" />
+        <watch expression="cOrientation_world" language="ObjectiveC" />
+        <watch expression="orientationD" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
