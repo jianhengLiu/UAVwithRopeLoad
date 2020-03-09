@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
         image_transport
         cv_bridge
         geometry_msgs
+        nav_msgs
         )
 
 find_package(OpenCV REQUIRED)
@@ -52,7 +53,9 @@ target_link_libraries(antiSwing
         )
 
 add_executable(tracker
-        ${SRC_LIST})
+        src/main.cpp
+        src/fhog.cpp
+        src/staple_tracker.cpp)
 target_link_libraries(tracker
         ${catkin_LIBRARIES}
         ${OpenCV_LIBS}
