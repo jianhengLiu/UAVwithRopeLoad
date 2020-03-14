@@ -189,44 +189,6 @@ void LeePayloadPositionController::ComputeDesiredAcceleration(Eigen::Vector3d* a
 	F_rt = F_n - F_pd - F_ff;
 
 	*acceleration= -1 * F_rt / vehicle_parameters_.mass_;
-/*
-  printf("mav position value: [%f, %f, %f].\n", mav_odometry_.position(0), mav_odometry_.position(1), mav_odometry_.position(2));
-  printf("mav command position value: [%f, %f, %f].\n", command_trajectory_.position_W(0), command_trajectory_.position_W(1), command_trajectory_.position_W(2));
-  printf("mav position error value: [%f, %f, %f].\n", position_error(0), position_error(1), position_error(2));
-
-  printf("mav velocity value: [%f, %f, %f].\n", velocity_W(0), velocity_W(1), velocity_W(2));
-  printf("mav command velocity value: [%f, %f, %f].\n", command_trajectory_.velocity_W(0), command_trajectory_.velocity_W(1), command_trajectory_.velocity_W(2));
-  printf("mav velocity error value: [%f, %f, %f].\n", velocity_error(0), velocity_error(1), velocity_error(2));
-
-  //printf("mav orientation: [%f, %f, %f, %f].\n", mav_odometry_.orientation.w(), mav_odometry_.orientation.x(), mav_odometry_.orientation.y(), 
-	//		 mav_odometry_.orientation.z());
-  //printf("mav desired orientation: [%f, %f, %f, %f].\n", command_trajectory_.orientation_W_B.w(), command_trajectory_.orientation_W_B.x(),
-	//	 	 command_trajectory_.orientation_W_B.y(), command_trajectory_.orientation_W_B.z());
-
-  printf("payload position value: [%f, %f, %f].\n", payload_odometry_.position(0), payload_odometry_.position(1), payload_odometry_.position(2));
-  printf("payload command position value: [%f, %f, %f].\n", command_payload_trajectory_.position_W(0), command_payload_trajectory_.position_W(1),
-		 	command_payload_trajectory_.position_W(2));
-  printf("payload position error value: [%f, %f, %f].\n", px_error(0), px_error(1), px_error(2));
-
-  //printf("payload velocity value: [%f, %f, %f].\n", payload_velocity_W(0), payload_velocity_W(1), payload_velocity_W(2));
-  //printf("payload command velocity value: [%f, %f, %f].\n", command_payload_trajectory_.velocity_W(0), command_payload_trajectory_.velocity_W(1),
-	//	 	command_payload_trajectory_.velocity_W(2));
-  printf("payload velocity error value: [%f, %f, %f].\n", pv_error(0), pv_error(1), pv_error(2));
-
-  printf("payload desired orientation: [%f, %f, %f, %f].\n", command_payload_trajectory_.orientation_W_B.w(), 
-			 command_payload_trajectory_.orientation_W_B.x(), command_payload_trajectory_.orientation_W_B.y(), 
-			 command_payload_trajectory_.orientation_W_B.z());
-  printf("q desired value: [%f, %f, %f].\n", q_des(0), q_des(1), q_des(2));
-  printf("q value: [%f, %f, %f].\n", q(0), q(1), q(2));
-  @#￥%……&×A2345678AASD
-  @#￥%……&×A2345678AASD
-  @#￥%……&×A2345678AASDe_des(2));
-
-  printf("q rate  error value: [%f, %f, %f].\n", q_rate_error(0), q_rate_error(1), q_rate_error(2));
-
-
-  //printf("Acceleration value: [%f, %f, %f].\n", (*acceleration)(0), (*acceleration)(1), (*acceleration)(2));
-	*/
 }
 
 void LeePayloadPositionController::ComputeDesiredAngularAcc(const Eigen::Vector3d& acceleration,
@@ -234,7 +196,6 @@ void LeePayloadPositionController::ComputeDesiredAngularAcc(const Eigen::Vector3
   assert(angular_acceleration);
 
   Eigen::Matrix3d R = mav_odometry_.orientation.toRotationMatrix(); //There are EigenOdometry type in mav_msgs and rotor_control (confused)
-	//std::cout<<"Yaw:" << command_trajectory_.getYaw() << std::endl;
   // Get the desired rotation matrix.
   Eigen::Vector3d b1_des;
   b1_des << cos(command_trajectory_.getYaw()), sin(command_trajectory_.getYaw()), 0;
@@ -251,28 +212,6 @@ void LeePayloadPositionController::ComputeDesiredAngularAcc(const Eigen::Vector3
   R_des.col(1) = b3_des.cross(b1_des);
   R_des.col(2) = b3_des;
 
-  //Eigen::Vector3d b1_des;
-  //double yaw = command_trajectory_.getYaw();
-  //b1_des << cos(yaw), sin(yaw), 0;
-
-  //Eigen::Vector3d b3_des;
-  //b3_des = -acceleration / acceleration.norm();
-
-  //Eigen::Vector3d b2_des;
-  //b2_des = b3_des.cross(b1_des);
-  //b2_des.normalize();
-
-  //Eigen::Matrix3d R_des;
-  //R_des.col(0) = b2_des.cross(b3_des);
-  //R_des.col(1) = b2_des;
-  //R_des.col(2) = b3_des;
-
-
- 	//Eigen::Vector3d e_3(Eigen::Vector3d::UnitZ());
-	//if((command_payload_trajectory_.orientation_W_B.toRotationMatrix() * (-e_3))(2) != -1.0){
-  //	R_des = command_trajectory_.orientation_W_B.toRotationMatrix();
-	//	std::cout<<"R_des:" << R_des << std::endl;
-	//}
   // Angle error according to lee et al.
   Eigen::Matrix3d angle_error_matrix = 0.5 * (R_des.transpose() * R - R.transpose() * R_des);
   Eigen::Vector3d angle_error;

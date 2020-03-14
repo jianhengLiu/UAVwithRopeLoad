@@ -1,3 +1,7 @@
+# TODO：增加检测算法
+
+
+
 # 目标跟踪
 
 算法：KCF
@@ -16,3 +20,14 @@ https://www.zhihu.com/answer/330795289
 
 TODO: 尝试结合位置差和速度拟合成一个输出
 
+
+
+## 控制俯仰角和翻转角的PD控制
+
+无控制
+
+## ![xvControl](README.assets/without_xvControl.png)
+
+有控制
+
+![xvControl](README.assets/xvControl.png)

@@ -169,7 +169,6 @@ int channels[] = {0, 1};
 Mat dstHist;
 Rect rect(200, 200, 50, 50);
 vector<Point> pt; //保存目标轨迹
-void onMouse(int event, int x, int y, int flags, void *ustc); //鼠标回调函数
 Point2d targetTargetCamshift(Mat input)
 {
 //    Mat rectImage = input(rect); //子图像显示

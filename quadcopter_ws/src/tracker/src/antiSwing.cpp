@@ -135,37 +135,35 @@ Eigen::Vector4d PayloadController::getAllocatedRevs(double Force, Eigen::Vector3
 {
     Eigen::Matrix4d Minvese;
     double sqrt2 = sqrt(2);
-    Minvese << 1, sqrt2, sqrt2, 1,
-            1, -sqrt2, sqrt2, -1,
-            1, -sqrt2, -sqrt2, 1,
-            1, sqrt2, -sqrt2, -1;
+    Minvese << 1, -sqrt2, sqrt2, 1,
+            1, -sqrt2, -sqrt2, -1,
+            1, sqrt2, -sqrt2, 1,
+            1, sqrt2, sqrt2, -1;
     Minvese = 0.25 * Minvese;
 
-
-    double d = 0.13;
-    Eigen::Vector4d input(Force, Moment.x() / d, Moment.y() / d, Moment.z());
+    Eigen::Vector4d input(Force, Moment.x(), Moment.y(), Moment.z());
     Eigen::Vector4d revs = Minvese * input;
-    if(revs.x() <0)
+    if (revs.x() < 0)
     {
-        revs.x()=0;
+        revs.x() = 0;
     }
-    if(revs.y() <0)
+    if (revs.y() < 0)
     {
-        revs.y()=0;
+        revs.y() = 0;
     }
-    if(revs.z() <0)
+    if (revs.z() < 0)
     {
-        revs.z()=0;
+        revs.z() = 0;
     }
-    if(revs.w() <0)
+    if (revs.w() < 0)
     {
-        revs.w()=0;
+        revs.w() = 0;
     }
     revs.x() = sqrt(revs.x());
     revs.y() = sqrt(revs.y());
     revs.z() = sqrt(revs.z());
     revs.w() = sqrt(revs.w());
-    cout << "1" << revs << endl;
+//    cout << "1" <<endl<< input << endl;
     return revs;
 }
 
@@ -194,30 +192,27 @@ PayloadController::getMoment(Eigen::Vector3d force, Eigen::Matrix3d rotationMatr
 
 }
 
-//Eigen::Vector3d PayloadController::getForceA()
-//{
-//}
-
 Eigen::Vector4d PayloadController::getRevs()
 {
     Eigen::Vector3d errorPosition = positionBody - cDesiredPositionBody;
     Eigen::Vector3d errorVelocity = velocityBody - desiredVelocityBody;
-
+//    cout << "C" << endl << positionBody << endl;
     Eigen::Vector3d errorPayloadPosition = cVector_world - cDesiredVector_world;
     Eigen::Vector3d errorPayloadVelocity = cVectorD_world - cDesiredVectorD_world;
 
-    const Eigen::Vector3d k_bx = Eigen::Vector3d(0, 0, 2.5);
-    const Eigen::Vector3d k_bv = Eigen::Vector3d(0, 0, 0);
-    const Eigen::Vector3d k_px = Eigen::Vector3d(0, 0, 0);
-    const Eigen::Vector3d k_pv = Eigen::Vector3d(0, 0, 0);
+    const Eigen::Vector3d k_bx = Eigen::Vector3d(2.0, 2.0, 1.5);
+    const Eigen::Vector3d k_bv = Eigen::Vector3d(2.5, 2.5, 2.5);
+    const Eigen::Vector3d k_px = Eigen::Vector3d(0, 0, 0);//(1.0, 1.0, 1.0);
+    const Eigen::Vector3d k_pv = Eigen::Vector3d(0, 0, 0);//(1.5, 1.5, 2.5);
 
     Eigen::Vector3d e3(0, 0, -1);
-//    cout << "C" << endl << errorPosition << endl;
+
     Eigen::Vector3d F_n = -errorPosition.cwiseProduct(k_bx) - errorVelocity.cwiseProduct(k_bv) -
                           errorPayloadPosition.cwiseProduct(k_px) -
-                          errorPayloadVelocity.cwiseProduct(k_pv);
-//    cout << "C" << endl << F_n + errorPosition << endl;
-    F_n += (massQuadcopter + massPayload) * (cDesiredVectorDD_world - e3);
+                          errorPayloadVelocity.cwiseProduct(k_pv) +
+                          (massQuadcopter + massPayload) * cDesiredVectorDD_world;
+//    cout << "C" << endl << F_n << endl;
+    F_n += (massQuadcopter + massPayload) * (-e3 * 9.8);
 
 //    have been valued by function: updateDesiredPayloadStates
     cDesiredOrientation_world = cDesiredVector_world / cDesiredVector_world.norm();
@@ -229,34 +224,33 @@ Eigen::Vector4d PayloadController::getRevs()
     Eigen::Vector3d orientationErrorD = getOrientationErrorD();
 
 
-    float k_q = 0;
-    float k_w = 0;  //p d controller parameters
+    const Eigen::Vector3d k_q(0, 0, 0);
+    const Eigen::Vector3d k_w(0, 0, 0);  //p d controller parameters
 
-
-    Eigen::Vector3d F_pd = -k_q * orientationError - k_w * orientationErrorD;
+    Eigen::Vector3d F_pd = - orientationError.cwiseProduct(k_q) -  orientationErrorD.cwiseProduct(k_w);
     Eigen::Vector3d F_ff =
             massQuadcopter * length * cOrientation_world.dot((cDesiredOrientation_world.cross(cDesiredVectorD_world))) *
             cOrientation_world.cross(cOrientationD_world) +
             massQuadcopter * length *
             (cDesiredOrientation_world.cross(cDesiredOrientationDD_world).cross(cOrientation_world));
 
-
     float k_ff = 0;
     Eigen::Vector3d F = F_n - F_pd - k_ff * F_ff;
 
     //保方向饱和函数
-    if (F.norm() > 1.2)
+    if (F.norm() > 15)
     {
-        F = 1.2 * F / F.norm();
+        F = 15 * F / F.norm();
     }
 
-    Eigen::Vector3d liftForce = F.cwiseProduct(rotationMatrix_BuW.inverse() * (-e3));
+//    Eigen::Vector3d liftForce = F.cwiseProduct(rotationMatrix_BuW.inverse() * (-e3));
+//    cout << "C" << endl << F << endl;
 
-    //0,1,2->XYZ
-    Eigen::Vector3d eulerAngle = desiredQuaterniondBody.matrix().eulerAngles(0, 1, 2);
-//    cout << "C" << F.norm() << endl;
-    Eigen::Vector3d b1_des(cos(eulerAngle.z()), sin(eulerAngle.z()), 0);
-    Eigen::Vector3d b3_des = liftForce / liftForce.norm();
+    //2,1,0->ZYX
+    Eigen::Vector3d eulerAngle = desiredQuaterniondBody.matrix().eulerAngles(2, 1, 0);
+    Eigen::Vector3d b1_des(cos(eulerAngle.x()), sin(eulerAngle.x()), 0);
+
+    Eigen::Vector3d b3_des = F / F.norm();
 
     Eigen::Vector3d b2_des;
     b2_des = b3_des.cross(b1_des);
@@ -270,29 +264,35 @@ Eigen::Vector4d PayloadController::getRevs()
     Eigen::Vector3d errorRotation =
             0.5 * antisymmetricMatrixToVector((desiredRotationMatrix.transpose() * rotationMatrix_BuW -
                                                rotationMatrix_BuW.transpose() * desiredRotationMatrix));
-
-    float k_omega = 1;
-    Eigen::Vector3d desiredAngular = k_omega * errorRotation;
+//    cout << "C" << endl << errorRotation << endl;
+//    float k_omega = 1;
+//    Eigen::Vector3d desiredAngular = k_omega * errorRotation;
     Eigen::Vector3d errorAngular = cAngularVelocity_body;//小角度假设下可忽略： - rotationMatrix_BuW.transpose() * desiredRotationMatrix * desiredAngular;
 
-    float k_p = 0.1;
-    float k_d = 0.1;
-    Eigen::Matrix3d J_q;
-    J_q << 0.1, 0, 0,
-            0, 0.1, 0,
-            0, 0, 0.1;
+//    Eigen::Matrix3d J_q;
+//    J_q << 0.1, 0, 0,
+//            0, 0.1, 0,
+//            0, 0, 0.1;
+    const Eigen::Vector3d k_p = Eigen::Vector3d(3, 3, 1);
+    const Eigen::Vector3d k_d = Eigen::Vector3d(0.8, 0.8, 1.5);
     Eigen::Vector3d moment =
-            -k_p * errorRotation - k_d * errorAngular;// + cAngularVelocity_body.cross(J_q * cAngularVelocity_body);
-    //保方向饱和函数
-//    if (moment.norm() > 1)
-//    {
-//        moment = 1 * moment / moment.norm();
-//    }
-//    cout << "C" << endl << moment.norm() << endl;
+            -errorRotation.cwiseProduct(k_p) +
+            errorAngular.cwiseProduct(k_d);// + cAngularVelocity_body.cross(J_q * cAngularVelocity_body);
 
+//            保方向饱和函数
+    if (moment.norm() > 1)
+    {
+        moment = 1 * moment / moment.norm();
+    }
+//    cout << "C" << endl <<   << endl;
+//    moment.x() = moment.x() / 10;
 //    Eigen::Vector3d moment = getMoment(F, rotationMatrix_BuW, cAngularVelocity_body);
 //    cout << liftForce << endl;
-    Eigen::Vector4d revs = getAllocatedRevs(liftForce.norm(), moment);
+
+    double liftForce = b3_des.transpose() * F;
+
+//    cout<<liftForce<<endl;
+    Eigen::Vector4d revs = getAllocatedRevs(liftForce, moment);
 
 //    moment = Eigen::Vector3d(0, 0, 0);
 //     revs = getAllocatedRevs(liftForce.norm(), moment);
