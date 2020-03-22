@@ -38,8 +38,12 @@ TODO: 尝试结合位置差和速度拟合成一个输出
 
 ![payloadWithoutControl_PrecisePos](README.assets/payloadWithoutControl_PrecisePos.png)
 
+ [payloadWithoutControl.mkv](videos/payloadWithoutControl.mkv) 
+
 有控制
 
 ![payloadControl_PrecisePos](README.assets/payloadControl_PrecisePos.png)
+
+ [payloadControl_PID_PrecisePos.mkv](videos/payloadControl_PID_PrecisePos.mkv) 
 
 ## iLQR控制升力F和力矩M的控制

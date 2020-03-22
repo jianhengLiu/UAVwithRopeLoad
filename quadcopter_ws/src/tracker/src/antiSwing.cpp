@@ -109,8 +109,8 @@ PayloadController::pixelerrorToVector(double errorX, double errorY, double lengt
     float v = errorY * 1 / resolutionY;
     float det = sqrt(pow(u, 2) + pow(v, 2) + 1);
     det = det * 1 / length;
-    Eigen::Vector3d orientation_body = Eigen::Vector3d(-u / det, -v / det, 1 / det);
-    return orientation_body;
+    Eigen::Vector3d vector_body = Eigen::Vector3d(-u / det, -v / det, 1 / det);
+    return vector_body;
 //
 //    p_refToParent = Eigen::Vector3f(-u / det, -v / det, 1 / det);
 }

@@ -129,17 +129,17 @@ void trackerStaple(cv::Mat input)
     int64 toc = cv::getTickCount() - tic;
     calculateTime += toc;
 
-
-    geometry_msgs::Twist targetVector;
-    targetVector.linear.x = (float) (-input.cols) / 2 + targetPoint.x;
-    targetVector.linear.y = (float) (-input.rows) / 2 + targetPoint.y;
-    pubTargetVector.publish(targetVector);
-
     float errorX = (float) (-input.cols) / 2 + targetPoint.x;
     float errorY = (float) (-input.rows) / 2 + targetPoint.y;
 
     Eigen::Vector3d cVector_body = controller.pixelerrorToVector(errorX, errorY, length, resolutionX, resolutionY);
     controller.updatePayloadStates(cVector_body);
+
+    geometry_msgs::Twist targetVector;
+    targetVector.linear.x = cVector_body.x();
+    targetVector.linear.y = cVector_body.y();
+    targetVector.linear.z = cVector_body.z();
+    pubTestVector.publish(targetVector);
 
     if (show_visualization)
     {
@@ -198,10 +198,17 @@ Point2d targetTargetCamshift(Mat input)
 //    targetVector.linear.y = (float) (-input.rows) / 2 + pt.back().y;
 //    pubTargetVector.publish(targetVector);
 
-//    float errorX = (float) (-input.cols) / 2 + pt.back().x;
-//    float errorY = (float) (-input.rows) / 2 + pt.back().y;
-//
-//    cOrientation_body = pixelerrorToVector(errorX, errorY, length, resolutionX, resolutionY);
+    float errorX = (float) (-input.cols) / 2 + pt.back().x;
+    float errorY = (float) (-input.rows) / 2 + pt.back().y;
+
+    Eigen::Vector3d cVector_body = controller.pixelerrorToVector(errorX, errorY, length, resolutionX, resolutionY);
+    controller.updatePayloadStates(cVector_body);
+
+    geometry_msgs::Twist targetVector;
+    targetVector.linear.x = cVector_body.x();
+    targetVector.linear.y = cVector_body.y();
+    targetVector.linear.z = cVector_body.z();
+    pubTestVector.publish(targetVector);
 
 
     imshow("track", input);
@@ -221,7 +228,7 @@ void callbackFloorCamera(const sensor_msgs::ImageConstPtr &floorImage)
      * Negative value (for example, -1) means flipping around both axes.
      */
     flip(img_floor, img_floor, 0);
-//    targetTargetCamshift(img_floor);
+    targetTargetCamshift(img_floor);
 //    trackerStaple(img_floor);
     cv::waitKey(1);
 }
@@ -229,9 +236,9 @@ void callbackFloorCamera(const sensor_msgs::ImageConstPtr &floorImage)
 void callbackPayload(const geometry_msgs::TwistConstPtr &payload)
 {
     Eigen::Vector3d cVector_body = Eigen::Vector3d(payload->linear.x, payload->linear.y, payload->linear.z);
-    controller.updatePayloadStates(cVector_body);
+//    controller.updatePayloadStates(cVector_body);
 //        cout<<cVector_body<<endl;
-    pubTargetVector.publish(*payload);
+//    pubTargetVector.publish(*payload);
 }
 
 void callbackOdometry(const nav_msgs::OdometryConstPtr &odom)
@@ -302,30 +309,18 @@ int main(int argc, char **argv)
         targetError.linear.y = controller.cVector_world.y();
         targetError.linear.z = controller.cVector_world.z();
         pubTestVector.publish(targetError);
-//        if (!controller.cVector_world.isZero())
+
         {
-//            cout << "::" << controller.cVector_world << endl;
             Eigen::Vector3d e3(0, 0, -1);
             Eigen::Vector3d inputDesiredVector_world = e3 * length;
             controller.updateDesiredPayloadStates(inputDesiredVector_world);
 
             Eigen::Vector4d revs = controller.getRevs();
 
-//            cout << "recs:" << revs  << endl;
-
             std_msgs::Float64MultiArray revsArray;
             revsArray.data = {revs.x(), revs.y(), revs.z(), revs.w()};
 
-//            cout << revsArray << endl;
             pubRotorRevs.publish(revsArray);
-
-//        targetError.linear.z = output.z();
-//        targetError.linear.x = revs(0);
-//        targetError.linear.y = revs(1);
-//        targetError.linear.z = revs(2);
-//        targetError.angular.x = revs(3);
-//            pubTestVector.publish(targetError);
-
         }
 
         controller.updatePastStates();
