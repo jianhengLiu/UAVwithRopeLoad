@@ -6,7 +6,7 @@
       <config projectName="tracker" targetName="download_extra_data" />
       <config projectName="tracker" targetName="gtest_main" />
       <config projectName="tracker" targetName="actionlib_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_eus" />
+      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_py" />
       <config projectName="tracker" targetName="roscpp_generate_messages_lisp" />
       <config projectName="tracker" targetName="std_msgs_generate_messages_eus" />
       <config projectName="tracker" targetName="geometry_msgs_generate_messages_py" />
@@ -15,12 +15,12 @@
       <config projectName="tracker" targetName="gmock" />
       <config projectName="tracker" targetName="staple_tracker" />
       <config projectName="tracker" targetName="sensor_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_nodejs" />
       <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_nodejs" />
       <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_cpp" />
       <config projectName="tracker" targetName="nav_msgs_generate_messages_lisp" />
       <config projectName="tracker" targetName="geometry_msgs_generate_messages_lisp" />
       <config projectName="tracker" targetName="sensor_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_nodejs" />
       <config projectName="tracker" targetName="antiSwing" />
       <config projectName="tracker" targetName="nav_msgs_generate_messages_py" />
       <config projectName="tracker" targetName="nav_msgs_generate_messages_eus" />
@@ -33,16 +33,16 @@
       <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_lisp" />
       <config projectName="tracker" targetName="sensor_msgs_generate_messages_eus" />
       <config projectName="tracker" targetName="clean_test_results" />
-      <config projectName="tracker" targetName="fhog" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_nodejs" />
       <config projectName="tracker" targetName="roscpp_generate_messages_py" />
       <config projectName="tracker" targetName="roscpp_generate_messages_cpp" />
       <config projectName="tracker" targetName="doxygen" />
-      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_py" />
       <config projectName="tracker" targetName="tracker" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_eus" />
       <config projectName="tracker" targetName="gtest" />
       <config projectName="tracker" targetName="std_msgs_generate_messages_py" />
       <config projectName="tracker" targetName="geometry_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="fhog" />
       <config projectName="tracker" targetName="nav_msgs_generate_messages_nodejs" />
       <config projectName="tracker" targetName="tests" />
       <config projectName="tracker" targetName="roscpp_generate_messages_nodejs" />
@@ -101,9 +101,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/rotors_simulator/rotors_control/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$USER_HOME$/GitRepositories/FlightController/tracker/CMakeLists.txt" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -438,6 +438,12 @@
       <workItem from="1583942508299" duration="1519000" />
       <workItem from="1584076359143" duration="985000" />
       <workItem from="1584198416025" duration="4183000" />
+      <workItem from="1584203705977" duration="42000" />
+      <workItem from="1584283204488" duration="4660000" />
+      <workItem from="1584364425989" duration="5756000" />
+      <workItem from="1584872216184" duration="98000" />
+      <workItem from="1584872344091" duration="1114000" />
+      <workItem from="1584882641506" duration="6408000" />
     </task>
     <servers />
   </component>
@@ -453,30 +459,30 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="877" y="243" width="228" height="588" key="#xdebugger.XInspectDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1583164400526" />
-    <state x="1185" y="311" key="FileChooserDialogImpl" timestamp="1583757255631">
+    <state x="1185" y="311" key="FileChooserDialogImpl" timestamp="1584203744466">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="1185" y="311" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1583757255631" />
-    <state width="1803" height="314" key="GridCell.Tab.0.bottom" timestamp="1584203240229">
+    <state x="1185" y="311" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1584203744466" />
+    <state width="876" height="301" key="GridCell.Tab.0.bottom" timestamp="1584889316327">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state width="1803" height="380" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541874" />
-    <state width="1803" height="314" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1584203240229" />
-    <state width="1803" height="314" key="GridCell.Tab.0.center" timestamp="1584203240229">
+    <state width="876" height="301" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1584889316327" />
+    <state width="876" height="301" key="GridCell.Tab.0.center" timestamp="1584889316327">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state width="1803" height="380" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541874" />
-    <state width="1803" height="314" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1584203240229" />
-    <state width="1803" height="314" key="GridCell.Tab.0.left" timestamp="1584203240229">
+    <state width="876" height="301" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1584889316327" />
+    <state width="876" height="301" key="GridCell.Tab.0.left" timestamp="1584889316327">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state width="1803" height="380" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541873" />
-    <state width="1803" height="314" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1584203240229" />
-    <state width="1803" height="314" key="GridCell.Tab.0.right" timestamp="1584203240229">
+    <state width="876" height="301" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1584889316327" />
+    <state width="876" height="301" key="GridCell.Tab.0.right" timestamp="1584889316327">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state width="1803" height="380" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1582644541874" />
-    <state width="1803" height="314" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1584203240229" />
+    <state width="876" height="301" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1584889316327" />
     <state width="1803" height="351" key="GridCell.Tab.1.bottom" timestamp="1583337308912">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
@@ -493,10 +499,10 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state width="1803" height="351" key="GridCell.Tab.1.right/65.24.1855.1056@65.24.1855.1056" timestamp="1583337308912" />
-    <state x="65" y="-4" width="1855" height="1084" key="SettingsEditor" timestamp="1582875551308">
+    <state x="65" y="24" width="1855" height="1056" key="SettingsEditor" timestamp="1584366710570">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="65" y="-4" width="1855" height="1084" key="SettingsEditor/65.24.1855.1056@65.24.1855.1056" timestamp="1582875551308" />
+    <state x="65" y="24" width="1855" height="1056" key="SettingsEditor/65.24.1855.1056@65.24.1855.1056" timestamp="1584366710570" />
     <state width="883" height="448" key="SwitcherDM" timestamp="1583672925024">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
@@ -505,10 +511,10 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="656" y="246" key="run.anything.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1582874119246" />
-    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup" timestamp="1583913696408">
+    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup" timestamp="1584284465947">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1583913696408" />
+    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1584284465947" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

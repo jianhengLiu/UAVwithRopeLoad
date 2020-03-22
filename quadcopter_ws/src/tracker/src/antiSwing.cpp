@@ -127,7 +127,7 @@ PayloadController::getOrientationError()
 Eigen::Vector3d PayloadController::getOrientationErrorD()
 {
     Eigen::Vector3d orientationErrorD =
-            cOrientationD_world - cDesiredOrientation_world.cross(cDesiredOrientationD_world).cross(cOrientation_world);
+            cOrientationD_world - (cDesiredOrientation_world.cross(cDesiredOrientationD_world)).cross(cOrientation_world);
     return orientationErrorD;
 }
 
@@ -202,8 +202,8 @@ Eigen::Vector4d PayloadController::getRevs()
 
     const Eigen::Vector3d k_bx = Eigen::Vector3d(2.0, 2.0, 1.5);
     const Eigen::Vector3d k_bv = Eigen::Vector3d(2.5, 2.5, 2.5);
-    const Eigen::Vector3d k_px = Eigen::Vector3d(0, 0, 0);//(1.0, 1.0, 1.0);
-    const Eigen::Vector3d k_pv = Eigen::Vector3d(0, 0, 0);//(1.5, 1.5, 2.5);
+    const Eigen::Vector3d k_px = Eigen::Vector3d(-1.2,-1.2,-0.8);//(-0.8, -0.8, -12);//(0,0,0);//
+    const Eigen::Vector3d k_pv = Eigen::Vector3d(-2.5,-2.5,-0.5);//(-1.5, -1.5, -2.5);//(1.5, 1.5, 2.5);
 
     Eigen::Vector3d e3(0, 0, -1);
 
@@ -224,17 +224,17 @@ Eigen::Vector4d PayloadController::getRevs()
     Eigen::Vector3d orientationErrorD = getOrientationErrorD();
 
 
-    const Eigen::Vector3d k_q(0, 0, 0);
-    const Eigen::Vector3d k_w(0, 0, 0);  //p d controller parameters
-
-    Eigen::Vector3d F_pd = - orientationError.cwiseProduct(k_q) -  orientationErrorD.cwiseProduct(k_w);
+    const Eigen::Vector3d k_q(-1.5,-1.5,-1.0);//(-1.5, -1.5, -1.0);
+    const Eigen::Vector3d k_w(-0,-0,-0);(-0.1,-0.1,-0.1);//(0.2, 0.2, 0.1);  //p d controller parameters
+//    cout << "C" << endl << cDesiredOrientation_world << endl;
+    Eigen::Vector3d F_pd = -orientationError.cwiseProduct(k_q) - orientationErrorD.cwiseProduct(k_w);
     Eigen::Vector3d F_ff =
             massQuadcopter * length * cOrientation_world.dot((cDesiredOrientation_world.cross(cDesiredVectorD_world))) *
             cOrientation_world.cross(cOrientationD_world) +
             massQuadcopter * length *
             (cDesiredOrientation_world.cross(cDesiredOrientationDD_world).cross(cOrientation_world));
 
-    float k_ff = 0;
+    float k_ff = 1;
     Eigen::Vector3d F = F_n - F_pd - k_ff * F_ff;
 
     //保方向饱和函数
