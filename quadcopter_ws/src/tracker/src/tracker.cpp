@@ -4,8 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <fstream>
-#include <numeric>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -17,29 +15,24 @@
 #include <image_transport/image_transport.h>
 
 #include <geometry_msgs/Twist.h>
-#include <sensor_msgs/Imu.h>
-#include <nav_msgs/Odometry.h>
 #include <std_msgs/Float64MultiArray.h>
 
 
 using namespace std;
 using namespace cv;
 
-ros::Publisher pubTargetVector;
-ros::Publisher pubTestVector;
+ros::Publisher pubPixelError;
 
 PayloadController controller;
 
 cv::Point2f refineTracker(cv::Mat input, int times)
 {
-//    imshow("input", input);
     int cols = input.cols;
     int rows = input.rows;
     for (int i = 0; i < times; ++i)
     {
         cv::pyrUp(input, input);
     }
-//    imshow("inputUp", input);
 
     cvtColor(input, input, cv::COLOR_BGR2GRAY);
 
@@ -47,7 +40,6 @@ cv::Point2f refineTracker(cv::Mat input, int times)
 //    blur(input, input, cv::Size(3, 3));
 //    Canny(input, input, 100, 200);
 
-//    imshow("rectImage", input);
     vector<vector<cv::Point> > contours;
     vector<cv::Vec4i> hierarchy;
     findContours(input, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
@@ -95,9 +87,7 @@ std::vector<cv::Rect_<float>> result_rects;
 bool show_visualization = true;
 double calculateTime = 0;
 
-float length = 2.81122;
-int resolutionX = 512;
-int resolutionY = 512;
+
 
 void trackerStaple(cv::Mat input)
 {
@@ -132,14 +122,10 @@ void trackerStaple(cv::Mat input)
     float errorX = (float) (-input.cols) / 2 + targetPoint.x;
     float errorY = (float) (-input.rows) / 2 + targetPoint.y;
 
-    Eigen::Vector3d cVector_body = controller.pixelerrorToVector(errorX, errorY, length, resolutionX, resolutionY);
-    controller.updatePayloadStates(cVector_body);
+    std_msgs::Float64MultiArray pixelError;
+    pixelError.data = {errorX, errorY};
+    pubPixelError.publish(pixelError);
 
-    geometry_msgs::Twist targetVector;
-    targetVector.linear.x = cVector_body.x();
-    targetVector.linear.y = cVector_body.y();
-    targetVector.linear.z = cVector_body.z();
-    pubTestVector.publish(targetVector);
 
     if (show_visualization)
     {
@@ -171,8 +157,6 @@ Rect rect(200, 200, 50, 50);
 vector<Point> pt; //保存目标轨迹
 Point2d targetTargetCamshift(Mat input)
 {
-//    Mat rectImage = input(rect); //子图像显示
-//    imshow("Sub Image", rectImage);
     cvtColor(input, targetImageHSV, CV_RGB2HSV);
     inRange(targetImageHSV, Scalar(100, 43, 46), Scalar(124, 255, 255), targetImageHSV);
     calcHist(&targetImageHSV, 2, channels, Mat(), dstHist, 1, &histSize, &histRange, true, false);
@@ -193,23 +177,12 @@ Point2d targetTargetCamshift(Mat input)
 
     circle(input, pt.back(), 10, Scalar(0, 255, 0), -1);
 
-//    geometry_msgs::Twist targetVector;
-//    targetVector.linear.x = (float) (-input.cols) / 2 + pt.back().x;
-//    targetVector.linear.y = (float) (-input.rows) / 2 + pt.back().y;
-//    pubTargetVector.publish(targetVector);
-
     float errorX = (float) (-input.cols) / 2 + pt.back().x;
     float errorY = (float) (-input.rows) / 2 + pt.back().y;
 
-    Eigen::Vector3d cVector_body = controller.pixelerrorToVector(errorX, errorY, length, resolutionX, resolutionY);
-    controller.updatePayloadStates(cVector_body);
-
-    geometry_msgs::Twist targetVector;
-    targetVector.linear.x = cVector_body.x();
-    targetVector.linear.y = cVector_body.y();
-    targetVector.linear.z = cVector_body.z();
-    pubTestVector.publish(targetVector);
-
+    std_msgs::Float64MultiArray pixelError;
+    pixelError.data = {errorX, errorY};
+    pubPixelError.publish(pixelError);
 
     imshow("track", input);
 
@@ -230,6 +203,7 @@ void callbackFloorCamera(const sensor_msgs::ImageConstPtr &floorImage)
     flip(img_floor, img_floor, 0);
     targetTargetCamshift(img_floor);
 //    trackerStaple(img_floor);
+
     cv::waitKey(1);
 }
 
@@ -237,43 +211,8 @@ void callbackPayload(const geometry_msgs::TwistConstPtr &payload)
 {
     Eigen::Vector3d cVector_body = Eigen::Vector3d(payload->linear.x, payload->linear.y, payload->linear.z);
 //    controller.updatePayloadStates(cVector_body);
-//        cout<<cVector_body<<endl;
-//    pubTargetVector.publish(*payload);
+//    cout<<cVector_body<<endl;
 }
-
-void callbackOdometry(const nav_msgs::OdometryConstPtr &odom)
-{
-    Eigen::Vector3d positionBody(odom->pose.pose.position.x, odom->pose.pose.position.y, odom->pose.pose.position.z);
-    Eigen::Vector3d linearVelocity(odom->twist.twist.linear.x, odom->twist.twist.linear.y, odom->twist.twist.linear.z);
-
-    controller.positionBody = positionBody;
-    controller.velocityBody = linearVelocity;
-}
-
-void callbackImu(const sensor_msgs::ImuConstPtr &imu)
-{
-
-    Eigen::Quaterniond quaternion(imu->orientation.w, imu->orientation.x, imu->orientation.y, imu->orientation.z);
-    Eigen::Vector3d linearAcceleration(imu->linear_acceleration.x, imu->linear_acceleration.y,
-                                       imu->linear_acceleration.z);
-    Eigen::Vector3d omega(imu->angular_velocity.x, imu->angular_velocity.y, imu->angular_velocity.z);
-
-    controller.acceleration = linearAcceleration;
-//    cout<<"Omega"<<endl<<omega<<endl;
-    controller.cAngularVelocity_body = omega;
-    controller.rotationMatrix_BuW = quaternion.toRotationMatrix();
-
-}
-
-void callbackTarget(const geometry_msgs::PoseConstPtr &pose)
-{
-    Eigen::Vector3d positionTarget(pose->position.x, pose->position.y, pose->position.z);
-    Eigen::Quaterniond quaternionTarget(pose->orientation.w, pose->orientation.x, pose->orientation.y,
-                                        pose->orientation.z);
-
-    controller.updateTargetStates(positionTarget, quaternionTarget);
-}
-
 
 int main(int argc, char **argv)
 {
@@ -284,50 +223,13 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(nh);
     image_transport::Subscriber subFloorCamera = it.subscribe("/floorCamera", 1, callbackFloorCamera);
 
-    ros::Subscriber subIMU = nh.subscribe("/imu", 1, callbackImu);
-    ros::Subscriber subPayloadPosition = nh.subscribe("/payload", 1, callbackPayload);
-    ros::Subscriber subOdometry = nh.subscribe("/odom", 1, callbackOdometry);
-    ros::Subscriber subTarget = nh.subscribe("/target", 1, callbackTarget);
+//    ros::Subscriber subPayloadPosition = nh.subscribe("/payload", 1, callbackPayload);
 
-    //多线程订阅
-    ros::AsyncSpinner spinner(4); // Use 4 threads
-
-
-    pubTargetVector = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
-    pubTestVector = nh.advertise<geometry_msgs::Twist>("/testVector", 1);
-    ros::Publisher pubRotorRevs = nh.advertise<std_msgs::Float64MultiArray>("/rotorRevs", 1);
-
-
-    double massQuadcopter = 1;
-    double massPayload = 0.2;
-    controller.initializeParameter(massQuadcopter, massPayload, length);
+    pubPixelError= nh.advertise<std_msgs::Float64MultiArray>("/pixelerror", 1);
 
     while (ros::ok())
     {
-        geometry_msgs::Twist targetError;
-        targetError.linear.x = controller.cVector_world.x();
-        targetError.linear.y = controller.cVector_world.y();
-        targetError.linear.z = controller.cVector_world.z();
-        pubTestVector.publish(targetError);
-
-        {
-            Eigen::Vector3d e3(0, 0, -1);
-            Eigen::Vector3d inputDesiredVector_world = e3 * length;
-            controller.updateDesiredPayloadStates(inputDesiredVector_world);
-
-            Eigen::Vector4d revs = controller.getRevs();
-
-            std_msgs::Float64MultiArray revsArray;
-            revsArray.data = {revs.x(), revs.y(), revs.z(), revs.w()};
-
-            pubRotorRevs.publish(revsArray);
-        }
-
-        controller.updatePastStates();
-
-        spinner.start();
-
-//        ros::spinOnce();
+        ros::spinOnce();
     }
 
     ros::waitForShutdown();

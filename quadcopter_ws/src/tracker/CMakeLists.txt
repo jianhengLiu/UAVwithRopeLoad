@@ -20,14 +20,13 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
 
+catkin_package()
 
 include_directories(
         # include
         ${catkin_INCLUDE_DIRS}
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-
-aux_source_directory(./src/ SRC_LIST)
 
 add_library(fhog
         include/fhog.h
@@ -53,7 +52,7 @@ target_link_libraries(antiSwing
         )
 
 add_executable(tracker
-        src/main.cpp
+        src/tracker.cpp
         src/fhog.cpp
         src/staple_tracker.cpp)
 target_link_libraries(tracker
@@ -61,5 +60,12 @@ target_link_libraries(tracker
         ${OpenCV_LIBS}
         fhog
         staple_tracker
+        antiSwing
+        )
+
+add_executable(flightController
+        src/payloadControl_PrecisePos.cpp)
+target_link_libraries(flightController
+        ${catkin_LIBRARIES}
         antiSwing
         )
