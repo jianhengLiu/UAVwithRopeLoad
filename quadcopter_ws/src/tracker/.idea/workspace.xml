@@ -2,55 +2,55 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_nodejs" />
       <config projectName="tracker" targetName="download_extra_data" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="fhog" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="run_tests" />
-      <config projectName="tracker" targetName="staple_tracker" />
       <config projectName="tracker" targetName="actionlib_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="gmock_main" />
-      <config projectName="tracker" targetName="tracker" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_cpp" />
-      <config projectName="tracker" targetName="gmock" />
-      <config projectName="tracker" targetName="tests" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_eus" />
+      <config projectName="tracker" targetName="nav_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_py" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="staple_tracker" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_cpp" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_cpp" />
       <config projectName="tracker" targetName="sensor_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="doxygen" />
+      <config projectName="tracker" targetName="gmock" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_py" />
+      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="antiSwing" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="nav_msgs_generate_messages_py" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="tracker" targetName="nav_msgs_generate_messages_cpp" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_cpp" />
+      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_cpp" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_lisp" />
       <config projectName="tracker" targetName="actionlib_msgs_generate_messages_eus" />
       <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="antiSwing" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="nav_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_eus" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="flightController" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="nav_msgs_generate_messages_lisp" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_eus" />
-      <config projectName="tracker" targetName="std_msgs_generate_messages_nodejs" />
-      <config projectName="tracker" targetName="clean_test_results" />
-      <config projectName="tracker" targetName="roscpp_generate_messages_py" />
-      <config projectName="tracker" targetName="gtest" />
-      <config projectName="tracker" targetName="nav_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="nav_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="nav_msgs_generate_messages_nodejs" />
       <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_py" />
-      <config projectName="tracker" targetName="geometry_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="sensor_msgs_generate_messages_cpp" />
-      <config projectName="tracker" targetName="gtest_main" />
+      <config projectName="tracker" targetName="tests" />
+      <config projectName="tracker" targetName="clean_test_results" />
+      <config projectName="tracker" targetName="fhog" />
+      <config projectName="tracker" targetName="flightController" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_py" />
+      <config projectName="tracker" targetName="doxygen" />
       <config projectName="tracker" targetName="roscpp_generate_messages_lisp" />
+      <config projectName="tracker" targetName="rosgraph_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="gtest" />
+      <config projectName="tracker" targetName="actionlib_msgs_generate_messages_py" />
+      <config projectName="tracker" targetName="gmock_main" />
+      <config projectName="tracker" targetName="tracker" />
+      <config projectName="tracker" targetName="nav_msgs_generate_messages_lisp" />
+      <config projectName="tracker" targetName="run_tests" />
+      <config projectName="tracker" targetName="nav_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="sensor_msgs_generate_messages_eus" />
+      <config projectName="tracker" targetName="roscpp_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="std_msgs_generate_messages_nodejs" />
+      <config projectName="tracker" targetName="gtest_main" />
+      <config projectName="tracker" targetName="geometry_msgs_generate_messages_lisp" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -99,7 +99,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$USER_HOME$/ROS/learn_opencv/src/CMakeLists.txt" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
   </component>
@@ -453,6 +453,9 @@
       <workItem from="1585146260734" duration="3213000" />
       <workItem from="1585150227487" duration="2851000" />
       <workItem from="1585398550639" duration="6155000" />
+      <workItem from="1586159744510" duration="1404000" />
+      <workItem from="1586178142908" duration="599000" />
+      <workItem from="1586436733549" duration="40000" />
     </task>
     <servers />
   </component>
@@ -468,10 +471,10 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="877" y="243" width="228" height="588" key="#xdebugger.XInspectDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1583164400526" />
-    <state x="1185" y="311" key="FileChooserDialogImpl" timestamp="1584203744466">
+    <state x="1185" y="311" key="FileChooserDialogImpl" timestamp="1586436779316">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="1185" y="311" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1584203744466" />
+    <state x="1185" y="311" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1586436779316" />
     <state width="1803" height="297" key="GridCell.Tab.0.bottom" timestamp="1585405491557">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>

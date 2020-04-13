@@ -1,14 +1,52 @@
-# TODO：增加检测算法
+
+
+# 工作空间详情
+
+```lua
+├── quadcopter_ws
+│   └── src
+│       ├── apriltag_ros
+│       │   ├── apriltag_ros
+│       │   │   ├── launch
+│       │   │   │   ├── detection_sim.launch --使用的apriltag检测节点
+│       │   │   └── tagImages --存放二维码图片的文件夹
+│       └── tracker
+│           ├── launch
+│           │   └── payloadTracker.launch --启用staple或Camshift跟踪的launch文件
+│           └── src
+│               ├── payloadControl_PrecisePos.cpp --最终控制的主程序
+│               └── tracker.cpp --使用负载跟踪的视觉节点
+├── Research.md --研究的相关整理资料
+├── Resources --相关的资料
+├── scenes --Coppeliasim场景
+│   ├── quarter_PrecisePos.ttt --使用仿真反馈负载位置的控制场景
+│   ├── quarter_Vision.ttt --最新使用apriltag进行控制的场景
+└── videos 
+```
+
+
+
+# TODO：
+
+- 增加检测算法
+- 整理好框架
+- 整理下文件
 
 
 
 # 目标跟踪
 
-算法：KCF
+## 1.算法：KCF
 
 效果：
 
 ![xyzEstimation](README.assets/xyzEstimation_KCF.png) [estimateQuadcopterLoad-2020-02-19_17.10.04.mkv](videos/estimateQuadcopterLoad-2020-02-19_17.10.04.mkv) 
+
+## 2.Apriltag
+
+![image-20200413224519397](README.assets/image-20200413224519397.png)
+
+ [quadcopterControllerApriltag-2020-04-13_22.38.53.mkv](videos/quadcopterControllerApriltag-2020-04-13_22.38.53.mkv) 
 
 # 防摆控制算法
 
@@ -47,3 +85,6 @@ TODO: 尝试结合位置差和速度拟合成一个输出
  [payloadControl_PID_PrecisePos.mkv](videos/payloadControl_PID_PrecisePos.mkv) 
 
 ## iLQR控制升力F和力矩M的控制
+```
+
+```

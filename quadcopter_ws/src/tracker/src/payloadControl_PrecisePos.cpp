@@ -21,6 +21,8 @@
 #include <nav_msgs/Odometry.h>
 #include <std_msgs/Float64MultiArray.h>
 
+#include <apriltag_ros/AprilTagDetectionArray.h>
+#include <geometry_msgs/PoseWithCovarianceStamped.h>
 
 using namespace std;
 
@@ -29,8 +31,7 @@ ros::Publisher pubTestVector;
 
 PayloadController controller;
 
-float length = 2.845
-        ;
+float length = 2.845;
 int resolutionX = 512;
 int resolutionY = 512;
 
@@ -81,6 +82,47 @@ void callbackTarget(const geometry_msgs::PoseConstPtr &pose)
     controller.updateTargetStates(positionTarget, quaternionTarget);
 }
 
+void callbackTag(const apriltag_ros::AprilTagDetectionArrayConstPtr &tag_msg)
+{
+//    apriltag_ros::AprilTagDetectionArray：
+//    std_msgs/Header header
+//    apriltags2_ros/AprilTagDetection[] detections
+
+//    apriltag_ros::AprilTagDetection：
+//    int32[] id
+//    float64[] size
+//    geometry_msgs/PoseWithCovarianceStamped pose
+
+    if (!tag_msg->detections.empty())
+    {
+        Eigen::Vector3d positionTarget(tag_msg->detections[0].pose.pose.pose.position.x,
+                                       tag_msg->detections[0].pose.pose.pose.position.y,
+                                       tag_msg->detections[0].pose.pose.pose.position.z);
+
+        controller.updatePayloadStates(positionTarget);
+
+        geometry_msgs::Twist targetVector;
+        targetVector.linear.x = positionTarget.x();
+        targetVector.linear.y = positionTarget.y();
+        targetVector.linear.z = positionTarget.z();
+        pubTargetVector.publish(targetVector);
+    } else
+    {
+        Eigen::Vector3d positionTarget(0, 0, length);
+
+        controller.updatePayloadStates(positionTarget);
+
+        geometry_msgs::Twist targetVector;
+        targetVector.linear.x = positionTarget.x();
+        targetVector.linear.y = positionTarget.y();
+        targetVector.linear.z = positionTarget.z();
+        pubTargetVector.publish(targetVector);
+
+        cout << "No tag detected!" << endl;
+    }
+
+}
+
 void callbackPayload(const geometry_msgs::TwistConstPtr &payload)
 {
     Eigen::Vector3d cVector_body = Eigen::Vector3d(payload->linear.x, payload->linear.y, payload->linear.z);
@@ -100,14 +142,18 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
     ros::Rate loop_rate(100);
 
+    //下面三个缺一不可
     ros::Subscriber subIMU = nh.subscribe("/imu", 1, callbackImu);
     ros::Subscriber subOdometry = nh.subscribe("/odom", 1, callbackOdometry);
     ros::Subscriber subTarget = nh.subscribe("/target", 1, callbackTarget);
 
+
+    ros::Subscriber subTag = nh.subscribe("/tag_detections", 1, callbackTag);
+
 //    使用视觉估计的位置
-    ros::Subscriber subPixelError = nh.subscribe("/pixelerror", 1, callbackPixelError);
+//    ros::Subscriber subPixelError = nh.subscribe("/pixelerror", 1, callbackPixelError);
 //    使用仿真返回的负载位置
-    ros::Subscriber subPayloadPosition = nh.subscribe("/payload", 1, callbackPayload);
+//    ros::Subscriber subPayloadPosition = nh.subscribe("/payload", 1, callbackPayload);
 
     //多线程订阅
     ros::AsyncSpinner spinner(4); // Use 4 threads

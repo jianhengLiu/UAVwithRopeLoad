@@ -29,12 +29,13 @@ cv::Point2f refineTracker(cv::Mat input, int times)
 {
     int cols = input.cols;
     int rows = input.rows;
+
+    cvtColor(input, input, cv::COLOR_BGR2GRAY);
+
     for (int i = 0; i < times; ++i)
     {
         cv::pyrUp(input, input);
     }
-
-    cvtColor(input, input, cv::COLOR_BGR2GRAY);
 
     cv::threshold(input, input, input.at<uchar>(input.cols / 2, input.rows / 2) - 10, 255, cv::THRESH_BINARY);
 //    blur(input, input, cv::Size(3, 3));
@@ -86,7 +87,6 @@ bool isTrackerStapleInit = false;
 std::vector<cv::Rect_<float>> result_rects;
 bool show_visualization = true;
 double calculateTime = 0;
-
 
 
 void trackerStaple(cv::Mat input)
@@ -204,6 +204,8 @@ void callbackFloorCamera(const sensor_msgs::ImageConstPtr &floorImage)
     targetTargetCamshift(img_floor);
 //    trackerStaple(img_floor);
 
+    cout << floorImage->header << endl;
+
     cv::waitKey(1);
 }
 
@@ -225,7 +227,7 @@ int main(int argc, char **argv)
 
 //    ros::Subscriber subPayloadPosition = nh.subscribe("/payload", 1, callbackPayload);
 
-    pubPixelError= nh.advertise<std_msgs::Float64MultiArray>("/pixelerror", 1);
+    pubPixelError = nh.advertise<std_msgs::Float64MultiArray>("/pixelerror", 1);
 
     while (ros::ok())
     {

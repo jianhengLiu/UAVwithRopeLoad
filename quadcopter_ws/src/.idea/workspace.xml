@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated>
-      <config projectName="stapleCC" targetName="stapleCC" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
-      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCATKIN_DEVEL_PREFIX:PATH=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel_isolated" GENERATION_DIR="$PROJECT_DIR$/../build_isolated" />
     </configurations>
   </component>
   <component name="ChangeListManager">
@@ -20,7 +18,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="ProjectId" id="1Xw2Kmbr7DXftQyPPlznF7rWs85" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,15 +27,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../rotors_control_include_rotors_control_lee_payload_position_controller.h" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../build_isolated" />
     <property name="restartRequiresConfirmation" value="false" />
-  </component>
-  <component name="RunManager">
-    <configuration name="stapleCC" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="stapleCC" TARGET_NAME="stapleCC" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="stapleCC" RUN_TARGET_NAME="stapleCC">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -70,6 +61,8 @@
       <workItem from="1582368847757" duration="605000" />
       <workItem from="1582901588122" duration="5070000" />
       <workItem from="1582970178450" duration="8595000" />
+      <workItem from="1586783530221" duration="32000" />
+      <workItem from="1586783563382" duration="4750000" />
     </task>
     <servers />
   </component>
@@ -77,10 +70,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="720" y="296" key="FileChooserDialogImpl" timestamp="1582974559233">
+    <state x="723" y="119" width="1197" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586784469705">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="720" y="296" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1582974559233" />
+    <state x="723" y="119" width="1197" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1586784469705" />
+    <state x="720" y="296" key="FileChooserDialogImpl" timestamp="1586785624379">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="720" y="296" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1586785624379" />
     <state width="876" height="203" key="GridCell.Tab.0.bottom" timestamp="1582906915230">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
@@ -113,6 +110,10 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state width="1803" height="362" key="GridCell.Tab.1.right/65.24.1855.1056@65.24.1855.1056" timestamp="1582275146912" />
+    <state x="65" y="24" width="1855" height="1056" key="SettingsEditor" timestamp="1586785704060">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="65" y="24" width="1855" height="1056" key="SettingsEditor/65.24.1855.1056@65.24.1855.1056" timestamp="1586785704060" />
     <state x="168" y="257" width="719" height="678" key="search.everywhere.popup" timestamp="1582296547621">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>

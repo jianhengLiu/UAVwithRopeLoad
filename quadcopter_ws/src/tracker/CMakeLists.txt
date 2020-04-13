@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
         cv_bridge
         geometry_msgs
         nav_msgs
+        apriltag_ros
         )
 
 find_package(OpenCV REQUIRED)
