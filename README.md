@@ -48,6 +48,8 @@
 
  [quadcopterControllerApriltag-2020-04-13_22.38.53.mkv](videos/quadcopterControllerApriltag-2020-04-13_22.38.53.mkv) 
 
+为了确保Apriltag能正确使用，请使用`catkin_make_isolated`进行编译
+
 # 防摆控制算法
 
 PD控制
