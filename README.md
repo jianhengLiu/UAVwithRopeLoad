@@ -26,6 +26,17 @@
 
 
 
+# 使用方法
+
+```bash
+catkin_make_isolated
+source devel_isolated/setup.zsh
+roslaunch tracker controller_payload_apriltag.launch#启动apriltag做跟踪的
+```
+
+
+
+
 # TODO：
 
 - 增加检测算法

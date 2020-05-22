@@ -27,7 +27,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../build_isolated" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="CMakeSettings" />
   </component>
@@ -64,6 +64,7 @@
       <workItem from="1586783530221" duration="32000" />
       <workItem from="1586783563382" duration="5330000" />
       <workItem from="1587288170144" duration="30000" />
+      <workItem from="1590156235617" duration="1517000" />
     </task>
     <servers />
   </component>

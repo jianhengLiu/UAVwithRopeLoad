@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find apriltag_ros)/launch/detection_sim.launch"/>
+    <node name="flightController" pkg = "tracker" type = "flightController" output="screen">
+    </node>
+</launch>

@@ -196,6 +196,8 @@ Eigen::Vector4d PayloadController::getRevs()
 {
     Eigen::Vector3d errorPosition = positionBody - cDesiredPositionBody;
     Eigen::Vector3d errorVelocity = velocityBody - desiredVelocityBody;
+    //TODO：这里期望速度是给定的绿球，是不变的，导致该速度误差退化为微分控制，找时间改为轨迹跟踪
+
 //    cout << "C" << endl << positionBody << endl;
     Eigen::Vector3d errorPayloadPosition = cVector_world - cDesiredVector_world;
     Eigen::Vector3d errorPayloadVelocity = cVectorD_world - cDesiredVectorD_world;
