@@ -181,8 +181,8 @@ void goal_callback(const geometry_msgs::PoseStamped::ConstPtr& msg) {
             ROS_WARN("[waypoint_generator] invalid goal in manual-lonely-waypoint mode.");
         }
     } else {
-        if (msg->pose.position.z > 0) {
-            // if height > 0, it's a normal goal;
+        if (msg->pose.position.z >= 0) {
+            // if height >= 0, it's a normal goal;
             geometry_msgs::PoseStamped pt = *msg;
             if (waypoint_type == string("noyaw")) {
                 double yaw = tf::getYaw(odom.pose.pose.orientation);

@@ -79,7 +79,7 @@
       <config projectName="Project" targetName="tf_generate_messages_nodejs" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
@@ -107,6 +107,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -577,7 +578,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591108493916</updated>
-      <workItem from="1591108496080" duration="3507000" />
+      <workItem from="1591108496080" duration="14176000" />
     </task>
     <servers />
   </component>
@@ -585,13 +586,29 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1803" height="349" key="GridCell.Tab.0.bottom" timestamp="1591122685838">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="349" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685838" />
+    <state width="1803" height="349" key="GridCell.Tab.0.center" timestamp="1591122685838">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="349" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685838" />
+    <state width="1803" height="349" key="GridCell.Tab.0.left" timestamp="1591122685837">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="349" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685837" />
+    <state width="1803" height="349" key="GridCell.Tab.0.right" timestamp="1591122685838">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="349" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685838" />
     <state x="656" y="246" key="run.anything.popup" timestamp="1591109582961">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="656" y="246" key="run.anything.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1591109582961" />
-    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup" timestamp="1591111434518">
+    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup" timestamp="1591117789554">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1591111434518" />
+    <state x="632" y="236" width="719" height="678" key="search.everywhere.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1591117789554" />
   </component>
 </project>

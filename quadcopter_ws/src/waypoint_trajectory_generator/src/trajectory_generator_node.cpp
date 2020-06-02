@@ -30,7 +30,7 @@ int _dev_order, _min_order;
 
 // ros related
 ros::Subscriber _way_pts_sub;
-ros::Publisher _wp_traj_vis_pub, _wp_path_vis_pub,_polyCoeff_with_time_pub;
+ros::Publisher _wp_traj_vis_pub, _wp_path_vis_pub, _polyCoeff_with_time_pub;
 
 // for planning
 int _poly_num1D;
@@ -63,6 +63,7 @@ void rcvWaypointsCallBack(const nav_msgs::Path &wp)
         Vector3d pt(wp.poses[k].pose.position.x, wp.poses[k].pose.position.y, wp.poses[k].pose.position.z);
         wp_list.push_back(pt);
 
+        cout<<wp.poses[k].pose.position.z<<endl;
         if (wp.poses[k].pose.position.z < 0.0)
             break;
     }
@@ -100,12 +101,14 @@ void trajGeneration(Eigen::MatrixXd path)
     visWayPointTraj(_polyCoeff, _polyTime);
 
 //    pub _polyCoeff_with_Time
-//    MatrixXd _polyCoeff_with_Time_Matrix;
-//    _polyCoeff_with_Time_Matrix<<_polyTime.matrix(),_polyCoeff;
-//    std_msgs::Float64MultiArray _polyCoeff_with_Time_MultiArray;
-//    tf::matrixEigenToMsg(_polyCoeff_with_Time_Matrix,_polyCoeff_with_Time_MultiArray);
-//    _polyCoeff_with_time_pub.publish(_polyCoeff_with_Time_MultiArray);
-//cout<<_polyTime.matrix()<<endl;
+    MatrixXd _polyTime_Matrix = VectorXd::Map(&_polyTime[0],_polyTime.size());//转化成矩阵//VectorXd re = VectorXd::Map(&x[0],x.size());//转化成向量
+    MatrixXd _polyCoeff_with_Time_Matrix(_polyCoeff.rows(),_polyCoeff.cols()+1);
+    _polyCoeff_with_Time_Matrix<<_polyTime_Matrix,_polyCoeff;
+    cout<<"_polyCoeff_with_Time_Matrix="<<endl<<_polyCoeff_with_Time_Matrix<<endl;
+    std_msgs::Float64MultiArray _polyCoeff_with_Time_MultiArray;
+    tf::matrixEigenToMsg(_polyCoeff_with_Time_Matrix,_polyCoeff_with_Time_MultiArray);
+    _polyCoeff_with_time_pub.publish(_polyCoeff_with_Time_MultiArray);
+
 }
 
 int main(int argc, char **argv)
