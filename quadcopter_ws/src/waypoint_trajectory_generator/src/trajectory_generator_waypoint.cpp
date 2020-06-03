@@ -1,4 +1,4 @@
-#include "trajectory_generator_waypoint.h"
+#include "../include/trajectory_generator_waypoint.h"
 #include <stdio.h>
 #include <ros/ros.h>
 #include <ros/console.h>
@@ -9,8 +9,12 @@
 using namespace std;
 using namespace Eigen;
 
-TrajectoryGeneratorWaypoint::TrajectoryGeneratorWaypoint()
-{}
+TrajectoryGeneratorWaypoint::TrajectoryGeneratorWaypoint(double Vel,double Acc)
+{
+    _Vel = Vel;
+    _Acc = Acc;
+
+}
 
 TrajectoryGeneratorWaypoint::~TrajectoryGeneratorWaypoint()
 {}
@@ -43,19 +47,18 @@ VectorXd get_dF(int k, int m, const int d_order, const Eigen::MatrixXd &Path,   
                 const Eigen::MatrixXd &Jerk);
 
 
-Eigen::MatrixXd TrajectoryGeneratorWaypoint::PolyQPGeneration(
+void TrajectoryGeneratorWaypoint::PolyQPGeneration(
         const int d_order,                    // the order of derivative
         const Eigen::MatrixXd &Path,          // waypoints coordinates (3d)
         const Eigen::MatrixXd &Vel,           // boundary velocity
         const Eigen::MatrixXd &Acc,           // boundary acceleration
-        const Eigen::MatrixXd &Jerk,           // boundary jerk
-        const Eigen::VectorXd &Time)          // time allocation in each segment
+        const Eigen::MatrixXd &Jerk)            // boundary jerk
 {
     // enforce initial and final velocity and accleration, for higher order derivatives, just assume them be 0;
     int p_order = 2 * d_order - 1;              // the order of polynomial
     int p_num1d = p_order + 1;                  // the number of variables in each segment
 
-    int m = Time.size();                          // the number of segments
+    int m = _polyTime.size();                          // the number of segments
 
     /*   Produce Mapping Matrix A to the entire trajectory, A is a mapping matrix that maps polynomial coefficients to derivatives.   */
 
@@ -73,7 +76,7 @@ Eigen::MatrixXd TrajectoryGeneratorWaypoint::PolyQPGeneration(
             {
                 Qj(i, l) =
                         Factorial(i) / Factorial(i - 4) * Factorial(l) / Factorial(l - 4) *
-                        pow(Time(j), i + l - p_order) / (i + l - p_order);
+                        pow(_polyTime(j), i + l - p_order) / (i + l - p_order);
 
                 Qj(l, i) = Qj(i, l);
             }
@@ -94,7 +97,7 @@ Eigen::MatrixXd TrajectoryGeneratorWaypoint::PolyQPGeneration(
             for (int i = k; i <= p_order; ++i)
             {
                 M(4 + k + j * p_num1d, i + j * p_num1d) =
-                        Factorial(i) / Factorial(i - k) * pow(Time(j), i - k);
+                        Factorial(i) / Factorial(i - k) * pow(_polyTime(j), i - k);
             }
         }
     }
@@ -188,14 +191,16 @@ Eigen::MatrixXd TrajectoryGeneratorWaypoint::PolyQPGeneration(
         PolyCoeff.block(i, 2 * p_num1d, 1, p_num1d) = P_z.block(i * p_num1d, 0, p_num1d, 1).transpose();
     }
 
-    return PolyCoeff;
+    _polyCoeff = PolyCoeff;
+    isTraj = true;
 }
 
 VectorXd
-get_dF(int k, int m, const int d_order, const Eigen::MatrixXd &Path,          // waypoints coordinates (3d)
-       const Eigen::MatrixXd &Vel,           // boundary velocity
-       const Eigen::MatrixXd &Acc,           // boundary acceleration
-       const Eigen::MatrixXd &Jerk)
+TrajectoryGeneratorWaypoint::get_dF(int k, int m, const int d_order,
+                                    const Eigen::MatrixXd &Path,          // waypoints coordinates (3d)
+                                    const Eigen::MatrixXd &Vel,           // boundary velocity
+                                    const Eigen::MatrixXd &Acc,           // boundary acceleration
+                                    const Eigen::MatrixXd &Jerk)
 {
     VectorXd dF(m + 7);
 
@@ -222,4 +227,125 @@ get_dF(int k, int m, const int d_order, const Eigen::MatrixXd &Path,          //
     }
 
     return dF;
+}
+
+
+double TrajectoryGeneratorWaypoint::timeAllocation_1D(double dis)
+{
+    double T = 0;
+    if (dis <= _Vel * _Vel / _Acc)
+    {
+        T = 2 * sqrt(dis / _Acc);
+    } else
+    {
+        T = _Vel / _Acc + dis / _Vel;
+    }
+    return T;
+}
+
+void TrajectoryGeneratorWaypoint::timeAllocation(MatrixXd Path)
+{
+    cout<<Path<<endl;
+    VectorXd time(Path.rows() - 1);
+
+    /*
+
+    STEP 1: Learn the "trapezoidal velocity" of "TIme Allocation" in L5, then finish this timeAllocation function
+
+    variable declaration: _Vel, _Acc: _Vel = 1.0, _Acc = 1.0 in this homework, you can change these in the test.launch
+
+    You need to return a variable "time" contains time allocation, which's type is VectorXd
+
+    The time allocation is many relative timeline but not one common timeline
+
+    */
+
+//    trapezoidal velocity
+    double delta_x = 0;
+    double delta_y = 0;
+    double delta_z = 0;
+
+    double time_x = 0;
+    double time_y = 0;
+    double time_z = 0;
+
+    for (int i = 0; i < time.size(); ++i)
+    {
+        delta_x = fabs(Path(i + 1, 0) - Path(i, 0));
+        delta_y = fabs(Path(i + 1, 1) - Path(i, 1));
+        delta_z = fabs(Path(i + 1, 2) - Path(i, 2));
+
+        time_x = timeAllocation_1D(delta_x);
+        time_y = timeAllocation_1D(delta_y);
+        time_z = timeAllocation_1D(delta_z);
+
+        time(i) = fmax(time_x, fmax(time_y, time_z));
+//        time(i) = 2;
+    }
+    cout << "time:" << endl << time << endl;
+    _polyTime = time;
+}
+
+
+Vector3d TrajectoryGeneratorWaypoint::getPolyStates(int k, double t_seg, int order)
+{
+
+    int _poly_num1D = _polyCoeff.cols() / 3;
+
+    Vector3d ret;
+
+    for (int dim = 0; dim < 3; dim++)
+    {
+        VectorXd coeff = (_polyCoeff.row(k)).segment(dim * _poly_num1D, _poly_num1D);
+        VectorXd time = VectorXd::Zero(_poly_num1D);
+
+        for (int j = order; j < _poly_num1D; j++)
+            if (j == 0)
+                time(j) = 1.0;
+            else
+                time(j) = Factorial(j) / Factorial(j - order) * pow(t_seg, j - order);
+
+        ret(dim) = coeff.dot(time);
+        //cout << "dim:" << dim << " coeff:" << coeff << endl;
+    }
+
+    return ret;
+}
+
+MatrixXd TrajectoryGeneratorWaypoint::getTrajectoryStates(double t)
+{
+//    每一段轨迹的时间起始于0
+//    t所在的时间段的初始时间
+    double t_init = 0;
+//    t在其对应时间段上的时间
+    double t_seg = 0;
+
+    int seg_idx = 0;
+
+    for (int i = 0; i < _polyTime.size(); i++)
+    {
+        if (t >= t_init + _polyTime(i))
+        {
+            t_init += _polyTime(i);
+        } else
+        {
+            t_seg = t - t_init;
+            seg_idx = i;
+            break;
+        }
+    }
+
+
+    Vector3d pos = getPolyStates(seg_idx, t_seg, 0);
+    Vector3d vel = getPolyStates(seg_idx, t_seg, 1);
+    Vector3d acc = getPolyStates(seg_idx, t_seg, 2);
+
+//    p:x,y,z
+//    v:x,y,z
+//    a:x,y,z
+    MatrixXd states(3, 3);
+    states << pos.transpose(),
+            vel.transpose(),
+            acc.transpose();
+    return states;
 }

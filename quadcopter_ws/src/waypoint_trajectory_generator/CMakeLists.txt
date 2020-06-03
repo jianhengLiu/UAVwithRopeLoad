@@ -35,12 +35,17 @@ include_directories(include
 #	${OOQPEI_INCLUDE_DIRS}
 )
 
-add_executable(trajectory_generator_node 
-	src/trajectory_generator_node.cpp
-	src/trajectory_generator_waypoint.cpp
-)
+add_library(trajectory_generator
+		include/trajectory_generator_waypoint.h
+		src/trajectory_generator_waypoint.cpp)
+target_link_libraries(trajectory_generator
+		${catkin_LIBRARIES})
 
-target_link_libraries(trajectory_generator_node
-   ${catkin_LIBRARIES}
-#		${OOQEI_LIBRARIES}
-)
+add_executable(demo_node
+		app/demo_node.cpp
+		)
+target_link_libraries(demo_node
+		${catkin_LIBRARIES}
+		trajectory_generator
+		)
+

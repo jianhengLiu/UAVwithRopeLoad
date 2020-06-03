@@ -22,37 +22,38 @@
       <config projectName="Project" targetName="rosgraph_msgs_generate_messages_cpp" />
       <config projectName="Project" targetName="rosgraph_msgs_generate_messages_lisp" />
       <config projectName="Project" targetName="sensor_msgs_generate_messages_py" />
-      <config projectName="Project" targetName="trajectory_generator_node" />
       <config projectName="Project" targetName="geometry_msgs_generate_messages_lisp" />
       <config projectName="Project" targetName="rosgraph_msgs_generate_messages_py" />
       <config projectName="Project" targetName="std_msgs_generate_messages_py" />
       <config projectName="Project" targetName="tf_generate_messages_cpp" />
       <config projectName="Project" targetName="map_msgs_generate_messages_eus" />
+      <config projectName="Project" targetName="trajectory_generator" />
+      <config projectName="Project" targetName="gmock" />
       <config projectName="Project" targetName="actionlib_msgs_generate_messages_eus" />
       <config projectName="Project" targetName="roscpp_generate_messages_eus" />
       <config projectName="Project" targetName="tf2_msgs_generate_messages_eus" />
-      <config projectName="Project" targetName="gmock" />
       <config projectName="Project" targetName="doxygen" />
       <config projectName="Project" targetName="tests" />
       <config projectName="Project" targetName="std_msgs_generate_messages_eus" />
-      <config projectName="Project" targetName="actionlib_msgs_generate_messages_lisp" />
       <config projectName="Project" targetName="nav_msgs_generate_messages_eus" />
+      <config projectName="Project" targetName="actionlib_msgs_generate_messages_lisp" />
       <config projectName="Project" targetName="_catkin_empty_exported_target" />
       <config projectName="Project" targetName="rviz_plugins" />
       <config projectName="Project" targetName="tf2_msgs_generate_messages_nodejs" />
       <config projectName="Project" targetName="actionlib_generate_messages_py" />
       <config projectName="Project" targetName="rosgraph_msgs_generate_messages_nodejs" />
       <config projectName="Project" targetName="actionlib_generate_messages_eus" />
-      <config projectName="Project" targetName="roscpp_generate_messages_nodejs" />
       <config projectName="Project" targetName="rosgraph_msgs_generate_messages_eus" />
+      <config projectName="Project" targetName="roscpp_generate_messages_nodejs" />
+      <config projectName="Project" targetName="demo_node" />
       <config projectName="Project" targetName="download_extra_data" />
       <config projectName="Project" targetName="run_tests" />
       <config projectName="Project" targetName="map_msgs_generate_messages_cpp" />
       <config projectName="Project" targetName="geometry_msgs_generate_messages_py" />
       <config projectName="Project" targetName="geometry_msgs_generate_messages_nodejs" />
-      <config projectName="Project" targetName="actionlib_msgs_generate_messages_cpp" />
-      <config projectName="Project" targetName="roscpp_generate_messages_cpp" />
       <config projectName="Project" targetName="actionlib_generate_messages_lisp" />
+      <config projectName="Project" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="Project" targetName="actionlib_msgs_generate_messages_cpp" />
       <config projectName="Project" targetName="actionlib_msgs_generate_messages_nodejs" />
       <config projectName="Project" targetName="actionlib_msgs_generate_messages_py" />
       <config projectName="Project" targetName="sensor_msgs_generate_messages_eus" />
@@ -105,16 +106,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/waypoint_trajectory_generator/app" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/waypoint_trajectory_generator/app" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/waypoint_trajectory_generator/include" />
       <recent name="$PROJECT_DIR$/FlightController/app" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.main">
+  <component name="RunManager" selected="CMake Application.demo_node">
     <configuration name="FlightController" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="FlightController" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -176,6 +181,11 @@
       </method>
     </configuration>
     <configuration name="clean_test_results" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="clean_test_results" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="demo_node" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="demo_node" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="demo_node">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -455,7 +465,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="trajectory_generator_node" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="trajectory_generator_node" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="trajectory_generator_node">
+    <configuration name="trajectory_generator" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="trajectory_generator" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -561,7 +571,8 @@
       <item itemvalue="CMake Application.visualization_msgs_generate_messages_nodejs" />
       <item itemvalue="CMake Application.visualization_msgs_generate_messages_py" />
       <item itemvalue="CMake Application.waypoint_generator" />
-      <item itemvalue="CMake Application.trajectory_generator_node" />
+      <item itemvalue="CMake Application.demo_node" />
+      <item itemvalue="CMake Application.trajectory_generator" />
       <item itemvalue="CMake Application.gmock" />
       <item itemvalue="CMake Application.gmock_main" />
       <item itemvalue="CMake Application.gtest" />
@@ -579,6 +590,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591108493916</updated>
       <workItem from="1591108496080" duration="14176000" />
+      <workItem from="1591147246478" duration="4993000" />
     </task>
     <servers />
   </component>
@@ -586,22 +598,42 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1803" height="349" key="GridCell.Tab.0.bottom" timestamp="1591122685838">
+    <state x="730" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591150528425">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="349" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685838" />
-    <state width="1803" height="349" key="GridCell.Tab.0.center" timestamp="1591122685838">
+    <state x="730" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1591150528425" />
+    <state width="1803" height="362" key="GridCell.Tab.0.bottom" timestamp="1591152242664">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="349" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685838" />
-    <state width="1803" height="349" key="GridCell.Tab.0.left" timestamp="1591122685837">
+    <state width="1803" height="362" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242664" />
+    <state width="1803" height="362" key="GridCell.Tab.0.center" timestamp="1591152242664">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="349" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685837" />
-    <state width="1803" height="349" key="GridCell.Tab.0.right" timestamp="1591122685838">
+    <state width="1803" height="362" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242664" />
+    <state width="1803" height="362" key="GridCell.Tab.0.left" timestamp="1591152242664">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state width="1803" height="349" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1591122685838" />
+    <state width="1803" height="362" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242664" />
+    <state width="1803" height="362" key="GridCell.Tab.0.right" timestamp="1591152242664">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="362" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242664" />
+    <state width="1803" height="362" key="GridCell.Tab.1.bottom" timestamp="1591152242665">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="362" key="GridCell.Tab.1.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242665" />
+    <state width="1803" height="362" key="GridCell.Tab.1.center" timestamp="1591152242665">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="362" key="GridCell.Tab.1.center/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242665" />
+    <state width="1803" height="362" key="GridCell.Tab.1.left" timestamp="1591152242665">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="362" key="GridCell.Tab.1.left/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242665" />
+    <state width="1803" height="362" key="GridCell.Tab.1.right" timestamp="1591152242665">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1803" height="362" key="GridCell.Tab.1.right/65.24.1855.1056@65.24.1855.1056" timestamp="1591152242665" />
     <state x="656" y="246" key="run.anything.popup" timestamp="1591109582961">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>

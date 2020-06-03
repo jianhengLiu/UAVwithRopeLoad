@@ -25,7 +25,7 @@ using namespace Eigen;
 
 // Param from launch file
 double _vis_traj_width;
-double _Vel, _Acc;
+double _Vel=1, _Acc=1;
 int _dev_order, _min_order;
 
 // ros related
@@ -34,25 +34,22 @@ ros::Publisher _wp_traj_vis_pub, _wp_path_vis_pub, _polyCoeff_with_time_pub;
 
 // for planning
 int _poly_num1D;
-MatrixXd _polyCoeff;
-VectorXd _polyTime;
 Vector3d _startPos = Vector3d::Zero();
 Vector3d _startVel = Vector3d::Zero();
 
+//
+TrajectoryGeneratorWaypoint trajectoryGeneratorWaypoint(_Vel,_Acc);
+
 // declare
-void visWayPointTraj(MatrixXd polyCoeff, VectorXd time);
+void visWayPointTraj();
 
 void visWayPointPath(MatrixXd path);
-
-Vector3d getPosPoly(MatrixXd polyCoeff, int k, double t);
-
-VectorXd timeAllocation(MatrixXd Path);
 
 void trajGeneration(Eigen::MatrixXd path);
 
 void rcvWaypointsCallBack(const nav_msgs::Path &wp);
 
-//Get the path points 
+//Get the path points
 void rcvWaypointsCallBack(const nav_msgs::Path &wp)
 {
     vector<Vector3d> wp_list;
@@ -63,7 +60,6 @@ void rcvWaypointsCallBack(const nav_msgs::Path &wp)
         Vector3d pt(wp.poses[k].pose.position.x, wp.poses[k].pose.position.y, wp.poses[k].pose.position.z);
         wp_list.push_back(pt);
 
-        cout<<wp.poses[k].pose.position.z<<endl;
         if (wp.poses[k].pose.position.z < 0.0)
             break;
     }
@@ -81,8 +77,6 @@ void rcvWaypointsCallBack(const nav_msgs::Path &wp)
 
 void trajGeneration(Eigen::MatrixXd path)
 {
-    TrajectoryGeneratorWaypoint trajectoryGeneratorWaypoint;
-
     MatrixXd vel = MatrixXd::Zero(2, 3);
     MatrixXd acc = MatrixXd::Zero(2, 3);
     MatrixXd jerk = MatrixXd::Zero(2, 3);
@@ -90,24 +84,26 @@ void trajGeneration(Eigen::MatrixXd path)
     vel.row(0) = _startVel;
 
     // give an arbitraty time allocation, all set all durations as 1 in the commented function.
-    _polyTime = timeAllocation(path);
+    trajectoryGeneratorWaypoint.timeAllocation(path);
 
     // generate a minimum-snap piecewise monomial polynomial-based trajectory
-    _polyCoeff = trajectoryGeneratorWaypoint.PolyQPGeneration(_dev_order, path, vel, acc, jerk, _polyTime);
+    trajectoryGeneratorWaypoint.PolyQPGeneration(_dev_order, path, vel, acc, jerk);
 
     visWayPointPath(path);
 
-    //After you finish your homework, you can use the function visWayPointTraj below to visulize your trajectory
-    visWayPointTraj(_polyCoeff, _polyTime);
+    visWayPointTraj();
 
 //    pub _polyCoeff_with_Time
-    MatrixXd _polyTime_Matrix = VectorXd::Map(&_polyTime[0],_polyTime.size());//转化成矩阵//VectorXd re = VectorXd::Map(&x[0],x.size());//转化成向量
-    MatrixXd _polyCoeff_with_Time_Matrix(_polyCoeff.rows(),_polyCoeff.cols()+1);
-    _polyCoeff_with_Time_Matrix<<_polyTime_Matrix,_polyCoeff;
-    cout<<"_polyCoeff_with_Time_Matrix="<<endl<<_polyCoeff_with_Time_Matrix<<endl;
+/*
+    MatrixXd _polyTime_Matrix = VectorXd::Map(&_polyTime[0],
+                                              _polyTime.size());//转化成矩阵//VectorXd re = VectorXd::Map(&x[0],x.size());//转化成向量
+    MatrixXd _polyCoeff_with_Time_Matrix(_polyCoeff.rows(), _polyCoeff.cols() + 1);
+    _polyCoeff_with_Time_Matrix << _polyTime_Matrix, _polyCoeff;
+    cout << "_polyCoeff_with_Time_Matrix=" << endl << _polyCoeff_with_Time_Matrix << endl;
     std_msgs::Float64MultiArray _polyCoeff_with_Time_MultiArray;
-    tf::matrixEigenToMsg(_polyCoeff_with_Time_Matrix,_polyCoeff_with_Time_MultiArray);
+    tf::matrixEigenToMsg(_polyCoeff_with_Time_Matrix, _polyCoeff_with_Time_MultiArray);
     _polyCoeff_with_time_pub.publish(_polyCoeff_with_Time_MultiArray);
+    */
 
 }
 
@@ -121,6 +117,8 @@ int main(int argc, char **argv)
     nh.param("planning/dev_order", _dev_order, 4);
     nh.param("planning/min_order", _min_order, 3);
     nh.param("vis/vis_traj_width", _vis_traj_width, 0.15);
+
+    trajectoryGeneratorWaypoint = TrajectoryGeneratorWaypoint(_Vel,_Acc);
 
     //_poly_numID is the maximum order of polynomial
     _poly_num1D = 2 * _dev_order;
@@ -139,12 +137,23 @@ int main(int argc, char **argv)
 
     _wp_traj_vis_pub = nh.advertise<visualization_msgs::Marker>("vis_trajectory", 1);
     _wp_path_vis_pub = nh.advertise<visualization_msgs::Marker>("vis_waypoint_path", 1);
-    _polyCoeff_with_time_pub = nh.advertise<std_msgs::Float64MultiArray>("polyCoeff_with_time", 1);
+//    _polyCoeff_with_time_pub = nh.advertise<std_msgs::Float64MultiArray>("polyCoeff_with_time", 1);
 
     ros::Rate rate(100);
     bool status = ros::ok();
     while (status)
     {
+//        if (trajectoryGeneratorWaypoint.isTraj == true)
+//        {
+//            MatrixXd states(3, 3);
+//            double t = 1;
+//            states = trajectoryGeneratorWaypoint.getTrajectoryStates(t);
+//            cout << "p=" << states.row(0) << endl;
+//            cout << "v=" << states.row(1) << endl;
+//            cout << "a=" << states.row(2) << endl;
+//        }
+
+
         ros::spinOnce();
         status = ros::ok();
         rate.sleep();
@@ -152,7 +161,8 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void visWayPointTraj(MatrixXd polyCoeff, VectorXd time)
+
+void visWayPointTraj()
 {
     visualization_msgs::Marker _traj_vis;
 
@@ -163,18 +173,18 @@ void visWayPointTraj(MatrixXd polyCoeff, VectorXd time)
     _traj_vis.id = 0;
     _traj_vis.type = visualization_msgs::Marker::SPHERE_LIST;
     _traj_vis.action = visualization_msgs::Marker::ADD;
-    _traj_vis.scale.x = _vis_traj_width;
-    _traj_vis.scale.y = _vis_traj_width;
-    _traj_vis.scale.z = _vis_traj_width;
+    _traj_vis.scale.x = 0.2;
+    _traj_vis.scale.y = 0.2;
+    _traj_vis.scale.z = 0.2;
     _traj_vis.pose.orientation.x = 0.0;
     _traj_vis.pose.orientation.y = 0.0;
     _traj_vis.pose.orientation.z = 0.0;
     _traj_vis.pose.orientation.w = 1.0;
 
     _traj_vis.color.a = 1.0;
-    _traj_vis.color.r = 1.0;
+    _traj_vis.color.r = 0.0;
     _traj_vis.color.g = 0.0;
-    _traj_vis.color.b = 0.0;
+    _traj_vis.color.b = 1.0;
 
     double traj_len = 0.0;
     int count = 0;
@@ -183,15 +193,24 @@ void visWayPointTraj(MatrixXd polyCoeff, VectorXd time)
     pre.setZero();
 
     _traj_vis.points.clear();
+    MatrixXd states(3, 3);
     Vector3d pos;
     geometry_msgs::Point pt;
 
+    VectorXd time = trajectoryGeneratorWaypoint._polyTime;
 
+//    double t_temp = 0;
     for (int i = 0; i < time.size(); i++)
     {
         for (double t = 0.0; t < time(i); t += 0.01, count += 1)
         {
-            pos = getPosPoly(polyCoeff, i, t);
+//            states = getTrajectoryStates(polyCoeff, time, t+t_temp);
+//            cout<<"states"<<endl<<states<<endl;
+//            cur(0) = pt.x = states(0,0);
+//            cur(1) = pt.y = states(0,1);
+//            cur(2) = pt.z = states(0,2);
+
+            pos = trajectoryGeneratorWaypoint.getPolyStates(i, t, 0);
             cur(0) = pt.x = pos(0);
             cur(1) = pt.y = pos(1);
             cur(2) = pt.z = pos(2);
@@ -200,6 +219,7 @@ void visWayPointTraj(MatrixXd polyCoeff, VectorXd time)
             if (count) traj_len += (pre - cur).norm();
             pre = cur;
         }
+//        t_temp += time(i);
     }
 
     _wp_traj_vis_pub.publish(_traj_vis);
@@ -267,81 +287,4 @@ void visWayPointPath(MatrixXd path)
 
     _wp_path_vis_pub.publish(points);
     _wp_path_vis_pub.publish(line_list);
-}
-
-Vector3d getPosPoly(MatrixXd polyCoeff, int k, double t)
-{
-    Vector3d ret;
-
-    for (int dim = 0; dim < 3; dim++)
-    {
-        VectorXd coeff = (polyCoeff.row(k)).segment(dim * _poly_num1D, _poly_num1D);
-        VectorXd time = VectorXd::Zero(_poly_num1D);
-
-        for (int j = 0; j < _poly_num1D; j++)
-            if (j == 0)
-                time(j) = 1.0;
-            else
-                time(j) = pow(t, j);
-
-        ret(dim) = coeff.dot(time);
-        //cout << "dim:" << dim << " coeff:" << coeff << endl;
-    }
-
-    return ret;
-}
-
-double timeAllocation_1D(double dis)
-{
-    double T = 0;
-    if (dis <= _Vel * _Vel / _Acc)
-    {
-        T = 2 * sqrt(dis / _Acc);
-    } else
-    {
-        T = _Vel / _Acc + dis / _Vel;
-    }
-    return T;
-}
-
-VectorXd timeAllocation(MatrixXd Path)
-{
-    VectorXd time(Path.rows() - 1);
-
-    /*
-
-    STEP 1: Learn the "trapezoidal velocity" of "TIme Allocation" in L5, then finish this timeAllocation function
-
-    variable declaration: _Vel, _Acc: _Vel = 1.0, _Acc = 1.0 in this homework, you can change these in the test.launch
-
-    You need to return a variable "time" contains time allocation, which's type is VectorXd
-
-    The time allocation is many relative timeline but not one common timeline
-
-    */
-
-//    trapezoidal velocity
-    double delta_x = 0;
-    double delta_y = 0;
-    double delta_z = 0;
-
-    double time_x = 0;
-    double time_y = 0;
-    double time_z = 0;
-
-    for (int i = 0; i < time.size(); ++i)
-    {
-        delta_x = fabs(Path(i + 1, 0) - Path(i, 0));
-        delta_y = fabs(Path(i + 1, 1) - Path(i, 1));
-        delta_z = fabs(Path(i + 1, 2) - Path(i, 2));
-
-        time_x = timeAllocation_1D(delta_x);
-        time_y = timeAllocation_1D(delta_y);
-        time_z = timeAllocation_1D(delta_z);
-
-        time(i) = fmax(time_x, fmax(time_y, time_z));
-//        time(i) = 2;
-    }
-    cout << "time:" << endl << time << endl;
-    return time;
 }
