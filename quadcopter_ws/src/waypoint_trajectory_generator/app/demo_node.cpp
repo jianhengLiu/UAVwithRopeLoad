@@ -38,7 +38,7 @@ Vector3d _startPos = Vector3d::Zero();
 Vector3d _startVel = Vector3d::Zero();
 
 //
-TrajectoryGeneratorWaypoint trajectoryGeneratorWaypoint(_Vel,_Acc);
+TrajectoryGeneratorWaypoint trajectoryGeneratorWaypoint;
 
 // declare
 void visWayPointTraj();
@@ -118,7 +118,7 @@ int main(int argc, char **argv)
     nh.param("planning/min_order", _min_order, 3);
     nh.param("vis/vis_traj_width", _vis_traj_width, 0.15);
 
-    trajectoryGeneratorWaypoint = TrajectoryGeneratorWaypoint(_Vel,_Acc);
+    trajectoryGeneratorWaypoint.init(_Vel, _Acc,);
 
     //_poly_numID is the maximum order of polynomial
     _poly_num1D = 2 * _dev_order;

@@ -9,15 +9,17 @@
 using namespace std;
 using namespace Eigen;
 
-TrajectoryGeneratorWaypoint::TrajectoryGeneratorWaypoint(double Vel,double Acc)
-{
-    _Vel = Vel;
-    _Acc = Acc;
-
-}
+TrajectoryGeneratorWaypoint::TrajectoryGeneratorWaypoint()
+{}
 
 TrajectoryGeneratorWaypoint::~TrajectoryGeneratorWaypoint()
 {}
+
+void TrajectoryGeneratorWaypoint::init(double Vel,double Acc)
+{
+    _Vel = Vel;
+    _Acc = Acc;
+}
 
 //define factorial function, input i, output i!
 int TrajectoryGeneratorWaypoint::Factorial(int x)

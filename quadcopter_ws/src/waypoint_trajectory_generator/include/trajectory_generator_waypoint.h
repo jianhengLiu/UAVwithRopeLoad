@@ -29,9 +29,11 @@ public:
     Eigen::MatrixXd _polyCoeff;
     Eigen::VectorXd _polyTime;
 
-    TrajectoryGeneratorWaypoint(double _Vel,double _Acc);
+    TrajectoryGeneratorWaypoint;
 
     ~TrajectoryGeneratorWaypoint();
+
+    void init(double Vel,double Acc);
 
     void PolyQPGeneration(
             const int order,
