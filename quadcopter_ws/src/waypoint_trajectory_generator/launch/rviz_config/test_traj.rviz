@@ -79,18 +79,18 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /trajectory_generator_node/vis_trajectory
+      Marker Topic: /demo_node/vis_trajectory
       Name: Marker
       Namespaces:
-        {}
+        traj_node/trajectory_waypoints: true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /trajectory_generator_node/vis_waypoint_path
+      Marker Topic: /demo_node/vis_waypoint_path
       Name: Marker
       Namespaces:
-        {}
+        wp_path: true
       Queue Size: 100
       Value: true
     - Class: rviz/Axes
