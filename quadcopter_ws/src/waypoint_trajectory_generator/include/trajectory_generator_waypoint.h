@@ -29,7 +29,7 @@ public:
     Eigen::MatrixXd _polyCoeff;
     Eigen::VectorXd _polyTime;
 
-    TrajectoryGeneratorWaypoint;
+    TrajectoryGeneratorWaypoint();
 
     ~TrajectoryGeneratorWaypoint();
 

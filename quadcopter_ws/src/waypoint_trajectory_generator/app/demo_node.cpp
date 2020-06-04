@@ -118,7 +118,7 @@ int main(int argc, char **argv)
     nh.param("planning/min_order", _min_order, 3);
     nh.param("vis/vis_traj_width", _vis_traj_width, 0.15);
 
-    trajectoryGeneratorWaypoint.init(_Vel, _Acc,);
+    trajectoryGeneratorWaypoint.init(_Vel, _Acc);
 
     //_poly_numID is the maximum order of polynomial
     _poly_num1D = 2 * _dev_order;
