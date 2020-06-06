@@ -1,6 +1,0 @@
-<launch>
-    <node name="tracker" pkg = "tracker" type = "tracker" output="screen">
-    </node>
-    <node name="flightController" pkg = "tracker" type = "flightController" output="screen">
-    </node>
-</launch>
