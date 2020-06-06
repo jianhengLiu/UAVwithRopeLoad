@@ -10,16 +10,15 @@
 class TrajectoryGeneratorWaypoint
 {
 private:
+    const int d_order = 6;// the order of derivative
+
     double _qp_cost;
     Eigen::MatrixXd _Q;
     Eigen::VectorXd _Px, _Py, _Pz;
     double _Vel, _Acc;
 
     Eigen::VectorXd
-    get_dF(int k, int m, const int d_order, const Eigen::MatrixXd &Path,          // waypoints coordinates (3d)
-           const Eigen::MatrixXd &Vel,           // boundary velocity
-           const Eigen::MatrixXd &Acc,           // boundary acceleration
-           const Eigen::MatrixXd &Jerk);
+    get_dF(int k, int m, const Eigen::MatrixXd &Path);          // waypoints coordinates (3d));
 
     double timeAllocation_1D(double dis);
 
@@ -35,14 +34,9 @@ public:
 
     void init(double Vel,double Acc);
 
-    void PolyQPGeneration(
-            const int order,
-            const Eigen::MatrixXd &Path,
-            const Eigen::MatrixXd &Vel,
-            const Eigen::MatrixXd &Acc,
-            const Eigen::MatrixXd &Jerk);
+    void PolyQPGeneration(const Eigen::MatrixXd &Path);
 
-    int Factorial(int x);
+    double Factorial(int x);
 
     void timeAllocation(Eigen::MatrixXd Path);
 
