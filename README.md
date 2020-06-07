@@ -23,39 +23,20 @@ This package is used to control the  simulation of UAV with rope load.
     │   │   └── main.cpp
     │   └── videos
     │       └── quadcopterController-2020-03-15_01.15.56.mkv
-    ├── rviz_plugins
-    │   ├── CMakeLists.txt
-    │   ├── config
-    │   │   └── rviz_config.rviz
-    │   ├── lib
-    │   │   └── librviz_plugins.so
-    │   ├── Makefile
-    │   ├── package.xml
-    │   ├── plugin_description.xml
-    │   └── src
-    │       ├── aerialmap_display.cpp
-    │       ├── aerialmap_display.h
-    │       ├── goal_tool.cpp
-    │       ├── goal_tool.h
-    │       ├── multi_probmap_display.cpp
-    │       ├── multi_probmap_display.h
-    │       ├── pose_tool.cpp
-    │       ├── pose_tool.h
-    │       ├── probmap_display.cpp
-    │       └── probmap_display.h
+    ├── rviz_plugins # 3D Nav Goal plugin
     └── waypoint_trajectory_generator
         ├── app
-        │   └── demo_node.cpp
+        │   └── demo_node.cpp # ROS node 订阅waypoints并生成可视化轨迹
         ├── CMakeLists.txt
         ├── include
-        │   └── trajectory_generator_waypoint.h
+        │   └── trajectory_generator_waypoint.h # 轨迹生成的头文件
         ├── launch
         │   ├── rviz_config
         │   │   └── test_traj.rviz
-        │   └── test.launch
+        │   └── test.launch # 示例launch文件
         ├── package.xml
         └── src
-            └── trajectory_generator_waypoint.cpp
+            └── trajectory_generator_waypoint.cpp # 轨迹生成的实现文件
 
 ```
 
