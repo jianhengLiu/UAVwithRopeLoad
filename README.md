@@ -39,9 +39,9 @@ roslaunch tracker controller_payload_apriltag.launch#启动apriltag做跟踪的
 
 # TODO：
 
-- 增加检测算法
 - 整理好框架
 - 整理下文件
+- 电位器测量负载向量配合视觉做卡尔曼滤波融合？
 
 
 
