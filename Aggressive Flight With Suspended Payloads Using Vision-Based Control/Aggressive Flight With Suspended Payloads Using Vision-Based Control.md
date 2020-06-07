@@ -68,7 +68,7 @@ Differential ﬂatness（微分平坦），保证了负载规划轨迹$\mathbf{X
 
 为了实现大角度摆动控制，因此无法进行线性化处理（小角度假设）或姿态参数化（奇异性）
 
-**无人机姿态控制器**(P)
+**无人机姿态控制器**
 
 $c$ 表示控制器计算得到的控制指令
 
@@ -76,7 +76,7 @@ $c$ 表示控制器计算得到的控制指令
 
 ![image-20200606144215305](Aggressive Flight With Suspended Payloads Using Vision-Based Control.assets/image-20200606144215305.png)
 
-**负载姿态控制器**(PD)
+**负载姿态控制器**
 
 ![image-20200606144251108](Aggressive Flight With Suspended Payloads Using Vision-Based Control.assets/image-20200606144251108.png)
 
@@ -84,7 +84,7 @@ $c$ 表示控制器计算得到的控制指令
 
 $c_{1c}$ 计算的中间坐标系
 
-**负载位置控制器**（PID)
+**负载位置控制器**
 
 ![image-20200606144324159](Aggressive Flight With Suspended Payloads Using Vision-Based Control.assets/image-20200606144324159.png)
 
@@ -131,6 +131,8 @@ $c_{1c}$ 计算的中间坐标系
 ![image-20200606150554893](Aggressive Flight With Suspended Payloads Using Vision-Based Control.assets/image-20200606150554893.png)
 
 ![image-20200606151807613](Aggressive Flight With Suspended Payloads Using Vision-Based Control.assets/image-20200606151807613.png)
+
+这里最小化$X_L^{(6)}$,即首先得保证0-5阶导数应该是连续的，同时因为一条轨迹有两个点求解得，根据连续性条件，我们即有2x6个约束条件，即可以最高求出12个参数，所以为了保证轨迹得平滑性，选取11阶得多项式
 
 连续性约束
 
