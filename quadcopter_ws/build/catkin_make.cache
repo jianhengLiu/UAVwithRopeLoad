@@ -1,0 +1,2 @@
+flightController:rviz_plugins:waypoint_generator:waypoint_trajectory_generator
+-DCATKIN_DEVEL_PREFIX=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel -DCMAKE_INSTALL_PREFIX=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/install -G Unix Makefiles

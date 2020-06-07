@@ -235,6 +235,7 @@ void TrajectoryGeneratorWaypoint::timeAllocation(MatrixXd Path)
 {
     cout<<Path<<endl;
     VectorXd time(Path.rows() - 1);
+    _totalTime = 0;
 
     /*
 
@@ -268,6 +269,7 @@ void TrajectoryGeneratorWaypoint::timeAllocation(MatrixXd Path)
         time_z = timeAllocation_1D(delta_z);
 
         time(i) = fmax(time_x, fmax(time_y, time_z));
+        _totalTime += time(i);
 //        time(i) = 2;
     }
     cout << "time:" << endl << time << endl;
@@ -336,4 +338,135 @@ MatrixXd TrajectoryGeneratorWaypoint::getTrajectoryStates(double t)
             vel.transpose(),
             acc.transpose();
     return states;
+}
+
+bool TrajectoryGeneratorWaypoint::trajGeneration(Eigen::MatrixXd waypoints)
+{
+    bool isGenerated = false;
+
+    _waypoints = waypoints;
+
+    // give an arbitraty time allocation, all set all durations as 1 in the commented function.
+    timeAllocation(_waypoints);
+
+    // generate a minimum-snap piecewise monomial polynomial-based trajectory
+    PolyQPGeneration(_waypoints);
+
+    isGenerated = true;
+    return isGenerated;
+
+}
+
+visualization_msgs::Marker TrajectoryGeneratorWaypoint::visWayPointPath()
+{
+    visualization_msgs::Marker line_list;
+    int id = 0;
+    line_list.header.frame_id = "map";
+    line_list.header.stamp = ros::Time::now();
+    line_list.ns = "wp_path";
+    line_list.action = visualization_msgs::Marker::ADD;
+    line_list.pose.orientation.w = 1.0;
+    line_list.pose.orientation.x = 0.0;
+    line_list.pose.orientation.y = 0.0;
+    line_list.pose.orientation.z = 0.0;
+
+    line_list.id = id;
+
+    line_list.type = visualization_msgs::Marker::LINE_STRIP;
+
+    line_list.scale.x = 0.15;
+    line_list.scale.y = 0.15;
+    line_list.scale.z = 0.15;
+    line_list.color.a = 1.0;
+
+    line_list.color.r = 0.0;
+    line_list.color.g = 1.0;
+    line_list.color.b = 0.0;
+
+    line_list.points.clear();
+
+    for (int i = 0; i < _waypoints.rows(); i++)
+    {
+        geometry_msgs::Point p;
+        p.x = _waypoints(i, 0);
+        p.y = _waypoints(i, 1);
+        p.z = _waypoints(i, 2);
+
+        if (i < (_waypoints.rows() - 1))
+        {
+            geometry_msgs::Point p_line;
+            p_line = p;
+            line_list.points.push_back(p_line);
+            p_line.x = _waypoints(i + 1, 0);
+            p_line.y = _waypoints(i + 1, 1);
+            p_line.z = _waypoints(i + 1, 2);
+            line_list.points.push_back(p_line);
+        }
+    }
+    return line_list;
+//    _wp_path_vis_pub.publish(line_list);
+}
+
+visualization_msgs::Marker TrajectoryGeneratorWaypoint::visWayPointTraj()
+{
+    visualization_msgs::Marker _traj_vis;
+
+    _traj_vis.header.stamp = ros::Time::now();
+    _traj_vis.header.frame_id = "map";
+
+    _traj_vis.ns = "traj_node/trajectory_waypoints";
+    _traj_vis.id = 0;
+    _traj_vis.type = visualization_msgs::Marker::SPHERE_LIST;
+    _traj_vis.action = visualization_msgs::Marker::ADD;
+    _traj_vis.scale.x = 0.2;
+    _traj_vis.scale.y = 0.2;
+    _traj_vis.scale.z = 0.2;
+    _traj_vis.pose.orientation.x = 0.0;
+    _traj_vis.pose.orientation.y = 0.0;
+    _traj_vis.pose.orientation.z = 0.0;
+    _traj_vis.pose.orientation.w = 1.0;
+
+    _traj_vis.color.a = 1.0;
+    _traj_vis.color.r = 1.0;
+    _traj_vis.color.g = 0.0;
+    _traj_vis.color.b = 0.0;
+
+    double traj_len = 0.0;
+    int count = 0;
+    Vector3d cur, pre;
+    cur.setZero();
+    pre.setZero();
+
+    _traj_vis.points.clear();
+    MatrixXd states(3, 3);
+    Vector3d pos;
+    geometry_msgs::Point pt;
+
+    VectorXd time = _polyTime;
+
+//    double t_temp = 0;
+    for (int i = 0; i < time.size(); i++)
+    {
+        for (double t = 0.0; t < time(i); t += 0.01, count += 1)
+        {
+//            states = getTrajectoryStates(polyCoeff, time, t+t_temp);
+//            cout<<"states"<<endl<<states<<endl;
+//            cur(0) = pt.x = states(0,0);
+//            cur(1) = pt.y = states(0,1);
+//            cur(2) = pt.z = states(0,2);
+
+            pos = getPolyStates(i, t, 0);
+            cur(0) = pt.x = pos(0);
+            cur(1) = pt.y = pos(1);
+            cur(2) = pt.z = pos(2);
+//            cout<<pos<<endl;
+            _traj_vis.points.push_back(pt);
+
+            if (count) traj_len += (pre - cur).norm();
+            pre = cur;
+        }
+//        t_temp += time(i);
+    }
+    return _traj_vis;
+//    publish(_traj_vis);
 }

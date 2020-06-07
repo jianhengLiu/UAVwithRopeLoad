@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -std=c++11 -Wall -O3 -march=native -g  -shared -Wl,-soname,libgmock_maind.so -o ../../lib/libgmock_maind.so CMakeFiles/gmock_main.dir/src/gmock_main.cc.o  -Wl,-rpath,/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/cmake-build-debug/lib ../../lib/libgmockd.so ../../lib/libgtestd.so -lpthread 

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/setup.sh
