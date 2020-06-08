@@ -8,17 +8,17 @@
 
 得每段轨迹得表达形式
 
-![image-20200607202044943](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607202044943.png)
+![image-20200607202044943](Minimum Snap浅度还行文.assets/image-20200607202044943.png)
 
 ## 1. 代价函数
 
 主要思想，通过优化代价函数得到对应系数使得最小化期望的状态变量（snap）
 
-![image-20200607201259698](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607201259698.png)
+![image-20200607201259698](Minimum Snap浅度还行文.assets/image-20200607201259698.png)
 
 对于其中一条的轨迹，通过简单的计算可以得到代价函数的矩阵形式
 
-![image-20200607202226166](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607202226166.png)
+![image-20200607202226166](Minimum Snap浅度还行文.assets/image-20200607202226166.png)
 
 得到的代价矩阵一般为二次正定，这样才能保证能够通过凸优化得到期望的参数，把这个矩阵记为**Q**
 
@@ -55,15 +55,15 @@
 
 这些边界条件都是规划前就已知的
 
-![image-20200607202829101](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607202829101.png)
+![image-20200607202829101](Minimum Snap浅度还行文.assets/image-20200607202829101.png)
 
 ## 3. 连续性约束
 
 即保证轨迹间相接点处的v,a,j，在轨迹两端是一致的保证连续
 
-![image-20200607201554475](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607201554475.png)
+![image-20200607201554475](Minimum Snap浅度还行文.assets/image-20200607201554475.png)
 
-![image-20200607202843740](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607202843740.png)
+![image-20200607202843740](Minimum Snap浅度还行文.assets/image-20200607202843740.png)
 
 
 
@@ -73,13 +73,13 @@
 
 选用梯形速度规划获得一个较为保守的时间分配
 
-![image-20200607201943482](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607201943482.png)
+![image-20200607201943482](Minimum Snap浅度还行文.assets/image-20200607201943482.png)
 
 同时应当尽可能的使用相对时间，保证数值稳定，否则很有可
 
 能会导致越界
 
-![image-20200607201829675](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607201829675.png)
+![image-20200607201829675](Minimum Snap浅度还行文.assets/image-20200607201829675.png)
 
 ```cpp
 double TrajectoryGeneratorWaypoint::timeAllocation_1D(double dis)
@@ -100,7 +100,7 @@ double TrajectoryGeneratorWaypoint::timeAllocation_1D(double dis)
 
 ## 5. 综上得到了需要求解的二次规划问题
 
-![image-20200607202955755](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607202955755.png)
+![image-20200607202955755](Minimum Snap浅度还行文.assets/image-20200607202955755.png)
 
 # 求解方法
 
@@ -110,7 +110,7 @@ double TrajectoryGeneratorWaypoint::timeAllocation_1D(double dis)
 
 观察上述的约束条件，实际是系数到状态变量的映射（计映射为**M**），因此我们可以直接将约束条件代入代价函数中，从而避免了复杂的凸优化求解问题
 
-![image-20200607203327337](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607203327337.png)
+![image-20200607203327337](Minimum Snap浅度还行文.assets/image-20200607203327337.png)
 
 ```cpp
 //  getM
@@ -135,11 +135,11 @@ double TrajectoryGeneratorWaypoint::timeAllocation_1D(double dis)
 
 对于状态变量，我们是有部分是已知的，未知的其实只有中间点除了位置的状态变量，因此希望能够重构状态变量向量，将已知的变量$d_F$和未知的变量$d_P$分离出来，这样我们就可以通过矩阵运算直接得到未知的变量进而获得期望的系数啦
 
-![image-20200607211248038](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607211248038.png)
+![image-20200607211248038](Minimum Snap浅度还行文.assets/image-20200607211248038.png)
 
 而对于这个映射矩阵$C$也有点讲究，我们稍微观察就可以以发现每个中间点其实都有一组重复的状态变量，所以实际我们可以在进行映射的时候也省略掉，这样维数也能够大大的减少呢
 
-![image-20200607211620438](C:\Users\94367\AppData\Roaming\Typora\typora-user-images\image-20200607211620438.png)
+![image-20200607211620438](Minimum Snap浅度还行文.assets/image-20200607211620438.png)
 
 ```cpp
 //    getCt
