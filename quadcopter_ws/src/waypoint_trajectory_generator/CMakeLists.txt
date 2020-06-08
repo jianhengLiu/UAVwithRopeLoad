@@ -22,14 +22,14 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
 #  quadrotor_msgs
 )
-catkin_package()
 
 find_package(Eigen3 REQUIRED)
 set(Eigen3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
 
 #find_package(OOQPEI REQUIRED)
 
-include_directories(include
+include_directories(
+		include
   	${catkin_INCLUDE_DIRS}
   	${Eigen3_INCLUDE_DIRS}
 #	${OOQPEI_INCLUDE_DIRS}
