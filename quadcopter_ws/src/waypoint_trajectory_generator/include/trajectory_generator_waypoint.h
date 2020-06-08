@@ -26,6 +26,15 @@ private:
 
     void timeAllocation(Eigen::MatrixXd Path); //时间分配函数
 
+    /**
+     *
+     * @param k : 第几段轨迹
+     * @param t_seg 对应轨迹段里的时间点
+     * @param order :p=0,v=1,a=2,...
+     * @return 轨迹段里的时间点对应order的x,y,z
+     */
+    Eigen::Vector3d getPolyStates(int k, double t_seg, int order);
+
 public:
     bool isTraj = false;
 
@@ -49,22 +58,15 @@ public:
 
     /**
      *
-     * @param k : x = 0, y = 1, z = 2
-     * @param t_seg 对应轨迹段里的时间点
-     * @param order :p=0,v=1,a=2,...
-     * @return 轨迹段里的时间点对应order的x,y,z
-     */
-    Eigen::Vector3d getPolyStates(int k, double t_seg, int order);
-
-    /**
-     *
      * @param t 此处t是对应全局时间，即轨迹开始到t的时间
-     * @return 包含x,y,z信息的3x3矩阵,组成如下
+     * @param order :p=0,v=1,a=2,...
+     * @return 包含对应order的x,y,z信息,组成如下
      * p:x,y,z
      * v:x,y,z
      * a:x,y,z
+     * ...
      */
-    Eigen::MatrixXd getTrajectoryStates(double t);
+    Eigen::Vector3d getTrajectoryStates(double t, int order);
 
     visualization_msgs::Marker visWayPointPath();//返回用于可视化的路径Marker
     visualization_msgs::Marker visWayPointTraj();//返回用于可视化的轨迹Marker

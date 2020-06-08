@@ -302,7 +302,7 @@ Vector3d TrajectoryGeneratorWaypoint::getPolyStates(int k, double t_seg, int ord
     return ret;
 }
 
-MatrixXd TrajectoryGeneratorWaypoint::getTrajectoryStates(double t)
+Vector3d TrajectoryGeneratorWaypoint::getTrajectoryStates(double t, int order)
 {
 //    每一段轨迹的时间起始于0
 //    t所在的时间段的初始时间
@@ -310,6 +310,7 @@ MatrixXd TrajectoryGeneratorWaypoint::getTrajectoryStates(double t)
 //    t在其对应时间段上的时间
     double t_seg = 0;
 
+    //找出对应时间对应的第几段轨迹
     int seg_idx = 0;
 
     for (int i = 0; i < _polyTime.size(); i++)
@@ -325,18 +326,8 @@ MatrixXd TrajectoryGeneratorWaypoint::getTrajectoryStates(double t)
         }
     }
 
+    Vector3d states = getPolyStates(seg_idx, t_seg, order);
 
-    Vector3d pos = getPolyStates(seg_idx, t_seg, 0);
-    Vector3d vel = getPolyStates(seg_idx, t_seg, 1);
-    Vector3d acc = getPolyStates(seg_idx, t_seg, 2);
-
-//    p:x,y,z
-//    v:x,y,z
-//    a:x,y,z
-    MatrixXd states(3, 3);
-    states << pos.transpose(),
-            vel.transpose(),
-            acc.transpose();
     return states;
 }
 

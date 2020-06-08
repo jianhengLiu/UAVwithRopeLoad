@@ -75,10 +75,12 @@ void rcvWaypointsCallBack(const nav_msgs::Path &wp)
         double t = ros::Time::now().toSec()-startTime;
         while (trajectoryGeneratorWaypoint._totalTime > t)
         {
-            MatrixXd states = trajectoryGeneratorWaypoint.getTrajectoryStates(t);
-//            cout << "p=" << states.row(0) << endl;
-//            cout << "v=" << states.row(1) << endl;
-//            cout << "a=" << states.row(2) << endl;
+//            VectorXd pos = trajectoryGeneratorWaypoint.getTrajectoryStates(t,0);
+//            cout<<"pos:"<<pos<<endl;
+//            VectorXd vel = trajectoryGeneratorWaypoint.getTrajectoryStates(t,1);
+//            cout<<"vel:"<<vel<<endl;
+//            VectorXd acc = trajectoryGeneratorWaypoint.getTrajectoryStates(t,2);
+//            cout<<"acc:"<<acc<<endl;
             t = ros::Time::now().toSec()-startTime;
         }
     }
