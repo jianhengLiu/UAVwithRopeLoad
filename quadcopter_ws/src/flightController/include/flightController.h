@@ -104,6 +104,11 @@ public:
     */
     Eigen::Vector4d getRevs();
 
+    Eigen::Vector4d getRevs(Eigen::Vector3d inputDesiredPos,
+                            Eigen::Vector3d inputDesiredVel,
+                            Eigen::Vector3d inputDesiredAcc,
+                            Eigen::Vector3d inputDesiredJerk);
+
 
 private:
     /**

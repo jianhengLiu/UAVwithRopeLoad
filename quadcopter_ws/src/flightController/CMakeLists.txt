@@ -24,7 +24,7 @@ find_package(Eigen3 REQUIRED)
 include_directories("/usr/include/eigen3")
 
 include_directories(
-        # include
+         include
         ${catkin_INCLUDE_DIRS}
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
@@ -36,6 +36,12 @@ target_link_libraries(FlightController
         ${catkin_LIBRARIES}
         )
 
+add_library(trajectory_generator_f
+        include/trajectory_generator_waypoint_f.h
+        src/trajectory_generator_waypoint_f.cpp)
+target_link_libraries(trajectory_generator_f
+        ${catkin_LIBRARIES})
+
 add_executable(main
         src/main.cpp
         )
@@ -43,4 +49,14 @@ target_link_libraries(main
         ${catkin_LIBRARIES}
         ${OpenCV_LIBS}
         FlightController
+        )
+
+add_executable(flightController_node
+        app/flightController_node.cpp
+        )
+target_link_libraries(flightController_node
+        ${catkin_LIBRARIES}
+        ${OpenCV_LIBS}
+        FlightController
+        trajectory_generator_f
         )

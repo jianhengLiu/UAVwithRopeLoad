@@ -1,15 +1,15 @@
 <launch>
 
-  <node pkg="waypoint_trajectory_generator" type="demo_node" name="demo_node" output="screen" required = "true">
+<!--  <node pkg="waypoint_trajectory_generator" type="demo_node" name="demo_node" output="screen" required = "true">-->
 
-      <remap from="~odom"      to="/msckf_vio/odometry"/>
-      <remap from="~joy"      to="/djiros/rc"/>
+<!--      <remap from="~odom"      to="/msckf_vio/odometry"/>-->
+<!--      <remap from="~joy"      to="/djiros/rc"/>-->
 
-      <param name="planning/vel"       value="4.0"  />
-      <param name="planning/acc"       value="3.0"  />
-      <param name="vis/vis_traj_width" value="0.15" />
+<!--      <param name="planning/vel"       value="4.0"  />-->
+<!--      <param name="planning/acc"       value="3.0"  />-->
+<!--      <param name="vis/vis_traj_width" value="0.15" />-->
 
-  </node>
+<!--  </node>-->
 
   <node pkg="waypoint_generator" name="waypoint_generator" type="waypoint_generator" output="screen">
       <remap from="~goal" to="/goal"/>

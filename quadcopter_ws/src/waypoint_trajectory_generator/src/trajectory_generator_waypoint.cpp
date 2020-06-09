@@ -290,8 +290,8 @@ Vector3d TrajectoryGeneratorWaypoint::getPolyStates(int k, double t_seg, int ord
         VectorXd time = VectorXd::Zero(_poly_num1D);
 
         for (int j = order; j < _poly_num1D; j++)
-            if (j == 0)
-                time(j) = 1.0;
+            if (j == order)
+                time(j) = Factorial(j) * 1.0;
             else
                 time(j) = Factorial(j) / Factorial(j - order) * pow(t_seg, j - order);
 
