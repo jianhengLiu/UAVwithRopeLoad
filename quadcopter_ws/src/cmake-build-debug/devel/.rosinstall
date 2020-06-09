@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/devel/setup.sh
