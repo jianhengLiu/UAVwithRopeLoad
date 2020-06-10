@@ -1,8 +1,8 @@
-# Install script for directory: /home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins
+# Install script for directory: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/chrisliu/桌面/quadcopter_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins/catkin_generated/installspace/rviz_plugins.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins/catkin_generated/installspace/rviz_plugins.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins/cmake" TYPE FILE FILES
-    "/home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins/catkin_generated/installspace/rviz_pluginsConfig.cmake"
-    "/home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins/catkin_generated/installspace/rviz_pluginsConfig-version.cmake"
+    "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins/catkin_generated/installspace/rviz_pluginsConfig.cmake"
+    "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins/catkin_generated/installspace/rviz_pluginsConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins" TYPE FILE FILES "/home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins" TYPE FILE FILES "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -59,7 +59,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librviz_plugins.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/chrisliu/桌面/quadcopter_ws/devel/lib/librviz_plugins.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/librviz_plugins.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librviz_plugins.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librviz_plugins.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -72,14 +72,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins" TYPE FILE FILES "/home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins/plugin_description.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins" TYPE FILE FILES "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins/plugin_description.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins/media" TYPE DIRECTORY FILES "/home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins/media/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins/media" TYPE DIRECTORY FILES "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins/media/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins/icons" TYPE DIRECTORY FILES "/home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins/icons/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rviz_plugins/icons" TYPE DIRECTORY FILES "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins/icons/")
 endif()
 

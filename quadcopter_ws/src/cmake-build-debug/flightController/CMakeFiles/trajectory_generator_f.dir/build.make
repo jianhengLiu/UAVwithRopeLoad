@@ -43,10 +43,10 @@ RM = /home/chrisliu/software/clion-2020.1.2/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include flightController/CMakeFiles/trajectory_generator_f.dir/depend.make
@@ -59,16 +59,16 @@ include flightController/CMakeFiles/trajectory_generator_f.dir/flags.make
 
 flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o: flightController/CMakeFiles/trajectory_generator_f.dir/flags.make
 flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o: ../flightController/src/trajectory_generator_waypoint_f.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o -c /home/chrisliu/桌面/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o -c /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp
 
 flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.i"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/桌面/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp > CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.i
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp > CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.i
 
 flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.s"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/桌面/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp -o CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.s
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp -o CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.s
 
 # Object files for target trajectory_generator_f
 trajectory_generator_f_OBJECTS = \
@@ -156,8 +156,8 @@ devel/lib/libtrajectory_generator_f.so: /usr/lib/x86_64-linux-gnu/libboost_syste
 devel/lib/libtrajectory_generator_f.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 devel/lib/libtrajectory_generator_f.so: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 devel/lib/libtrajectory_generator_f.so: flightController/CMakeFiles/trajectory_generator_f.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library ../devel/lib/libtrajectory_generator_f.so"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/trajectory_generator_f.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library ../devel/lib/libtrajectory_generator_f.so"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/trajectory_generator_f.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 flightController/CMakeFiles/trajectory_generator_f.dir/build: devel/lib/libtrajectory_generator_f.so
@@ -165,10 +165,10 @@ flightController/CMakeFiles/trajectory_generator_f.dir/build: devel/lib/libtraje
 .PHONY : flightController/CMakeFiles/trajectory_generator_f.dir/build
 
 flightController/CMakeFiles/trajectory_generator_f.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController && $(CMAKE_COMMAND) -P CMakeFiles/trajectory_generator_f.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController && $(CMAKE_COMMAND) -P CMakeFiles/trajectory_generator_f.dir/cmake_clean.cmake
 .PHONY : flightController/CMakeFiles/trajectory_generator_f.dir/clean
 
 flightController/CMakeFiles/trajectory_generator_f.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/flightController /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController/CMakeFiles/trajectory_generator_f.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController/CMakeFiles/trajectory_generator_f.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : flightController/CMakeFiles/trajectory_generator_f.dir/depend
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/build
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build
 
 # Include any dependencies generated for this target.
 include flightController/CMakeFiles/main.dir/depend.make
@@ -58,17 +58,17 @@ include flightController/CMakeFiles/main.dir/progress.make
 include flightController/CMakeFiles/main.dir/flags.make
 
 flightController/CMakeFiles/main.dir/src/main.cpp.o: flightController/CMakeFiles/main.dir/flags.make
-flightController/CMakeFiles/main.dir/src/main.cpp.o: /home/chrisliu/桌面/quadcopter_ws/src/flightController/src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/桌面/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flightController/CMakeFiles/main.dir/src/main.cpp.o"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/main.cpp.o -c /home/chrisliu/桌面/quadcopter_ws/src/flightController/src/main.cpp
+flightController/CMakeFiles/main.dir/src/main.cpp.o: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flightController/CMakeFiles/main.dir/src/main.cpp.o"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/main.cpp.o -c /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/main.cpp
 
 flightController/CMakeFiles/main.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/main.cpp.i"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/桌面/quadcopter_ws/src/flightController/src/main.cpp > CMakeFiles/main.dir/src/main.cpp.i
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/main.cpp > CMakeFiles/main.dir/src/main.cpp.i
 
 flightController/CMakeFiles/main.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/桌面/quadcopter_ws/src/flightController/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
@@ -184,7 +184,7 @@ flightController/main: /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.4.2.0
 flightController/main: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.2.0
 flightController/main: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.2.0
 flightController/main: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.2.0
-flightController/main: /home/chrisliu/桌面/quadcopter_ws/devel/lib/libFlightController.so
+flightController/main: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/libFlightController.so
 flightController/main: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.2.0
 flightController/main: /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.2.0
 flightController/main: /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.2.0
@@ -281,8 +281,8 @@ flightController/main: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
 flightController/main: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 flightController/main: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 flightController/main: flightController/CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/桌面/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 flightController/CMakeFiles/main.dir/build: flightController/main
@@ -290,10 +290,10 @@ flightController/CMakeFiles/main.dir/build: flightController/main
 .PHONY : flightController/CMakeFiles/main.dir/build
 
 flightController/CMakeFiles/main.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -P CMakeFiles/main.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -P CMakeFiles/main.dir/cmake_clean.cmake
 .PHONY : flightController/CMakeFiles/main.dir/clean
 
 flightController/CMakeFiles/main.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/flightController /home/chrisliu/桌面/quadcopter_ws/build /home/chrisliu/桌面/quadcopter_ws/build/flightController /home/chrisliu/桌面/quadcopter_ws/build/flightController/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : flightController/CMakeFiles/main.dir/depend
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/build
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build
 
 # Utility rule file for visualization_msgs_generate_messages_py.
 
@@ -63,10 +63,10 @@ rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/build: visua
 .PHONY : rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
 
 rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins && $(CMAKE_COMMAND) -P CMakeFiles/visualization_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins && $(CMAKE_COMMAND) -P CMakeFiles/visualization_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/clean
 
 rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins /home/chrisliu/桌面/quadcopter_ws/build /home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins /home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/depend
 

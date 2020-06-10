@@ -4,5 +4,5 @@
 -DROSCONSOLE_BACKEND_LOG4CXX
 -DQT_NO_KEYWORDS
 -o
-/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/rviz_plugins/src/moc_goal_tool.cpp
-/home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins/src/goal_tool.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/rviz_plugins/src/moc_goal_tool.cpp
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins/src/goal_tool.h

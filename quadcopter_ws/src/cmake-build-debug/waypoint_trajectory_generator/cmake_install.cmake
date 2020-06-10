@@ -1,4 +1,4 @@
-# Install script for directory: /home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator
+# Install script for directory: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

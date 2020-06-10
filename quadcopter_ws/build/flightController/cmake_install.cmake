@@ -1,8 +1,8 @@
-# Install script for directory: /home/chrisliu/桌面/quadcopter_ws/src/flightController
+# Install script for directory: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/chrisliu/桌面/quadcopter_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/chrisliu/桌面/quadcopter_ws/src/flightController
+# Install script for directory: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

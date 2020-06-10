@@ -130,6 +130,8 @@ private:
     */
 
     Eigen::Vector4d getAllocatedRevs(double Force, Eigen::Vector3d Moment);
+
+    Eigen::Vector3d payloadPosController()
 };
 
 

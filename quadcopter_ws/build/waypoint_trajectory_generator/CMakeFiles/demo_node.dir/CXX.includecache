@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp
 string
 -
 iostream
@@ -38,11 +38,11 @@ sensor_msgs/Joy.h
 algorithm
 -
 trajectory_generator_waypoint.h
-/home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/app/trajectory_generator_waypoint.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/app/trajectory_generator_waypoint.h
 eigen_conversions/eigen_msg.h
-/home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/app/eigen_conversions/eigen_msg.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/app/eigen_conversions/eigen_msg.h
 
-/home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/include/trajectory_generator_waypoint.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/include/trajectory_generator_waypoint.h
 Eigen/Eigen
 -
 vector

@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/include/flightController.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/include/flightController.h
 Eigen/Core
 -
 Eigen/Geometry
 -
 
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/src/main.cpp
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/main.cpp
 flightController.h
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/src/flightController.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/flightController.h
 ros/ros.h
 -
 geometry_msgs/Twist.h

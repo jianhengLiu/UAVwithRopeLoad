@@ -48,10 +48,10 @@ RM = /home/chrisliu/software/clion-2020.1.2/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

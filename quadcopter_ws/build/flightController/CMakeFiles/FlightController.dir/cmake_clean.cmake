@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/libFlightController.pdb"
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/libFlightController.so"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/libFlightController.pdb"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/libFlightController.so"
   "CMakeFiles/FlightController.dir/src/flightController.cpp.o"
 )
 

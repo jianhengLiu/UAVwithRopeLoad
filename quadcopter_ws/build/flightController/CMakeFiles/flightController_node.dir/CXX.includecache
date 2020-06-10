@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/app/flightController_node.cpp
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/flightController_node.cpp
 flightController.h
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/app/flightController.h
-trajectory_generator_waypoint.h
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/app/trajectory_generator_waypoint.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/flightController.h
+trajectory_generator_waypoint_f.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/trajectory_generator_waypoint_f.h
 ros/ros.h
 -
 nav_msgs/Path.h
@@ -26,13 +26,13 @@ nav_msgs/Odometry.h
 std_msgs/Float64MultiArray.h
 -
 
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/include/flightController.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/include/flightController.h
 Eigen/Core
 -
 Eigen/Geometry
 -
 
-/home/chrisliu/桌面/quadcopter_ws/src/flightController/include/trajectory_generator_waypoint.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/include/trajectory_generator_waypoint_f.h
 Eigen/Eigen
 -
 vector

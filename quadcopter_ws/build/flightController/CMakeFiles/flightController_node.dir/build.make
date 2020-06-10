@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/build
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build
 
 # Include any dependencies generated for this target.
 include flightController/CMakeFiles/flightController_node.dir/depend.make
@@ -58,17 +58,17 @@ include flightController/CMakeFiles/flightController_node.dir/progress.make
 include flightController/CMakeFiles/flightController_node.dir/flags.make
 
 flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o: flightController/CMakeFiles/flightController_node.dir/flags.make
-flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o: /home/chrisliu/桌面/quadcopter_ws/src/flightController/app/flightController_node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/桌面/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o -c /home/chrisliu/桌面/quadcopter_ws/src/flightController/app/flightController_node.cpp
+flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/flightController_node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o -c /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/flightController_node.cpp
 
 flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/flightController_node.dir/app/flightController_node.cpp.i"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/桌面/quadcopter_ws/src/flightController/app/flightController_node.cpp > CMakeFiles/flightController_node.dir/app/flightController_node.cpp.i
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/flightController_node.cpp > CMakeFiles/flightController_node.dir/app/flightController_node.cpp.i
 
 flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/flightController_node.dir/app/flightController_node.cpp.s"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/桌面/quadcopter_ws/src/flightController/app/flightController_node.cpp -o CMakeFiles/flightController_node.dir/app/flightController_node.cpp.s
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/flightController_node.cpp -o CMakeFiles/flightController_node.dir/app/flightController_node.cpp.s
 
 # Object files for target flightController_node
 flightController_node_OBJECTS = \
@@ -184,8 +184,8 @@ flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_vide
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.2.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.2.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.2.0
-flightController/flightController_node: /home/chrisliu/桌面/quadcopter_ws/devel/lib/libFlightController.so
-flightController/flightController_node: /home/chrisliu/桌面/quadcopter_ws/devel/lib/libtrajectory_generator.so
+flightController/flightController_node: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/libFlightController.so
+flightController/flightController_node: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/libtrajectory_generator_f.so
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.2.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.2.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.2.0
@@ -206,12 +206,18 @@ flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_phot
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.2.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.2.0
 flightController/flightController_node: /opt/ros/noetic/lib/libimage_transport.so
+flightController/flightController_node: /opt/ros/noetic/lib/libmessage_filters.so
 flightController/flightController_node: /opt/ros/noetic/lib/libclass_loader.so
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libPocoFoundation.so
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libdl.so
+flightController/flightController_node: /opt/ros/noetic/lib/libroscpp.so
+flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libpthread.so
+flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0
+flightController/flightController_node: /opt/ros/noetic/lib/libxmlrpcpp.so
 flightController/flightController_node: /opt/ros/noetic/lib/libroslib.so
 flightController/flightController_node: /opt/ros/noetic/lib/librospack.so
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.71.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
 flightController/flightController_node: /opt/ros/noetic/lib/libcv_bridge.so
@@ -263,16 +269,6 @@ flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_xpho
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.2.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.2.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.2.0
-flightController/flightController_node: /opt/ros/noetic/lib/libtf.so
-flightController/flightController_node: /opt/ros/noetic/lib/libtf2_ros.so
-flightController/flightController_node: /opt/ros/noetic/lib/libactionlib.so
-flightController/flightController_node: /opt/ros/noetic/lib/libmessage_filters.so
-flightController/flightController_node: /opt/ros/noetic/lib/libroscpp.so
-flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libpthread.so
-flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0
-flightController/flightController_node: /opt/ros/noetic/lib/libxmlrpcpp.so
-flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
-flightController/flightController_node: /opt/ros/noetic/lib/libtf2.so
 flightController/flightController_node: /opt/ros/noetic/lib/librosconsole.so
 flightController/flightController_node: /opt/ros/noetic/lib/librosconsole_log4cxx.so
 flightController/flightController_node: /opt/ros/noetic/lib/librosconsole_backend_interface.so
@@ -286,8 +282,8 @@ flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libboost_syste
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 flightController/flightController_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 flightController/flightController_node: flightController/CMakeFiles/flightController_node.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/桌面/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable flightController_node"
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flightController_node.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable flightController_node"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flightController_node.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 flightController/CMakeFiles/flightController_node.dir/build: flightController/flightController_node
@@ -295,10 +291,10 @@ flightController/CMakeFiles/flightController_node.dir/build: flightController/fl
 .PHONY : flightController/CMakeFiles/flightController_node.dir/build
 
 flightController/CMakeFiles/flightController_node.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -P CMakeFiles/flightController_node.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController && $(CMAKE_COMMAND) -P CMakeFiles/flightController_node.dir/cmake_clean.cmake
 .PHONY : flightController/CMakeFiles/flightController_node.dir/clean
 
 flightController/CMakeFiles/flightController_node.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/flightController /home/chrisliu/桌面/quadcopter_ws/build /home/chrisliu/桌面/quadcopter_ws/build/flightController /home/chrisliu/桌面/quadcopter_ws/build/flightController/CMakeFiles/flightController_node.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController/CMakeFiles/flightController_node.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : flightController/CMakeFiles/flightController_node.dir/depend
 

@@ -10,7 +10,7 @@
 class TrajectoryGeneratorWaypoint
 {
 private:
-    const int d_order = 4;// 决定了要最小化的阶次，这里minimum x^(6)
+    const int d_order = 6;// 决定了要最小化的阶次，这里minimum x^(6)
 
     double _Vel, _Acc;
 

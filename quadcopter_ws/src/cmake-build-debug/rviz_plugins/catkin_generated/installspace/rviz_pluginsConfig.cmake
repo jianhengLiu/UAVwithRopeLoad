@@ -67,8 +67,8 @@ set(rviz_plugins_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(rviz_plugins_SOURCE_PREFIX /home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins)
-  set(rviz_plugins_DEVEL_PREFIX /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/devel)
+  set(rviz_plugins_SOURCE_PREFIX /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins)
+  set(rviz_plugins_DEVEL_PREFIX /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/devel)
   set(rviz_plugins_INSTALL_PREFIX "")
   set(rviz_plugins_PREFIX ${rviz_plugins_DEVEL_PREFIX})
 else()

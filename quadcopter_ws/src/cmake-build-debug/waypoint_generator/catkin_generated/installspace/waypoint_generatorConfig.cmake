@@ -67,8 +67,8 @@ set(waypoint_generator_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(waypoint_generator_SOURCE_PREFIX /home/chrisliu/桌面/quadcopter_ws/src/waypoint_generator)
-  set(waypoint_generator_DEVEL_PREFIX /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/devel)
+  set(waypoint_generator_SOURCE_PREFIX /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_generator)
+  set(waypoint_generator_DEVEL_PREFIX /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/devel)
   set(waypoint_generator_INSTALL_PREFIX "")
   set(waypoint_generator_PREFIX ${waypoint_generator_DEVEL_PREFIX})
 else()

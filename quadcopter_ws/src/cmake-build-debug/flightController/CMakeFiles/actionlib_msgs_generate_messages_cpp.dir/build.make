@@ -43,10 +43,10 @@ RM = /home/chrisliu/software/clion-2020.1.2/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug
 
 # Utility rule file for actionlib_msgs_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build: acti
 .PHONY : flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
 
 flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController && $(CMAKE_COMMAND) -P CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController && $(CMAKE_COMMAND) -P CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/clean
 
 flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/flightController /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : flightController/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/depend
 

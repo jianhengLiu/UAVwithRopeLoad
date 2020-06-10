@@ -1,4 +1,4 @@
-prefix=/home/chrisliu/桌面/quadcopter_ws/devel
+prefix=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel
 
 Name: rviz_plugins
 Description: Description of rviz_plugins

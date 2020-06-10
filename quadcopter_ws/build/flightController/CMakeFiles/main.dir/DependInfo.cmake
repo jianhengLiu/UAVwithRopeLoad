@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/chrisliu/桌面/quadcopter_ws/src/flightController/src/main.cpp" "/home/chrisliu/桌面/quadcopter_ws/build/flightController/CMakeFiles/main.dir/src/main.cpp.o"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/main.cpp" "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController/CMakeFiles/main.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,7 +18,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
-  "/home/chrisliu/桌面/quadcopter_ws/src/flightController/include"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/opencv4"
@@ -26,7 +26,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/chrisliu/桌面/quadcopter_ws/build/flightController/CMakeFiles/FlightController.dir/DependInfo.cmake"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/flightController/CMakeFiles/FlightController.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

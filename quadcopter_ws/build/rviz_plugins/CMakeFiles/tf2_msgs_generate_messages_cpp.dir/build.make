@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/build
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build
 
 # Utility rule file for tf2_msgs_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build: tf2_msgs_gener
 .PHONY : rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
 
 rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins && $(CMAKE_COMMAND) -P CMakeFiles/tf2_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins && $(CMAKE_COMMAND) -P CMakeFiles/tf2_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/clean
 
 rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins /home/chrisliu/桌面/quadcopter_ws/build /home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins /home/chrisliu/桌面/quadcopter_ws/build/rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rviz_plugins/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/depend
 

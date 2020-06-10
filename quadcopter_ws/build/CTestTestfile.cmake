@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/chrisliu/桌面/quadcopter_ws/src
-# Build directory: /home/chrisliu/桌面/quadcopter_ws/build
+# Source directory: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
+# Build directory: /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

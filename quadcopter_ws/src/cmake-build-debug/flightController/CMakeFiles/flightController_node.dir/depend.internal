@@ -4,7 +4,7 @@
 flightController/CMakeFiles/flightController_node.dir/app/flightController_node.cpp.o
  ../flightController/include/flightController.h
  ../flightController/include/trajectory_generator_waypoint_f.h
- /home/chrisliu/桌面/quadcopter_ws/src/flightController/app/flightController_node.cpp
+ /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/app/flightController_node.cpp
  /opt/ros/noetic/include/geometry_msgs/Point.h
  /opt/ros/noetic/include/geometry_msgs/Pose.h
  /opt/ros/noetic/include/geometry_msgs/PoseStamped.h

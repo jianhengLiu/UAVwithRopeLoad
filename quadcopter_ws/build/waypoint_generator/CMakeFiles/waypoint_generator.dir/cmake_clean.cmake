@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/waypoint_generator/waypoint_generator"
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/waypoint_generator/waypoint_generator.pdb"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/waypoint_generator/waypoint_generator"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/waypoint_generator/waypoint_generator.pdb"
   "CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o"
 )
 

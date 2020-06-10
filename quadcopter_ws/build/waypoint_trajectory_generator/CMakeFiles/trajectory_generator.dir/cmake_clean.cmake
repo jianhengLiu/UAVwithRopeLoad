@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/libtrajectory_generator.pdb"
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/libtrajectory_generator.so"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/libtrajectory_generator.pdb"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/libtrajectory_generator.so"
   "CMakeFiles/trajectory_generator.dir/src/trajectory_generator_waypoint.cpp.o"
 )
 

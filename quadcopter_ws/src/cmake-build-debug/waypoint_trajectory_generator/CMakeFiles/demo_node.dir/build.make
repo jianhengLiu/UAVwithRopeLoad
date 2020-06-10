@@ -43,10 +43,10 @@ RM = /home/chrisliu/software/clion-2020.1.2/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include waypoint_trajectory_generator/CMakeFiles/demo_node.dir/depend.make
@@ -59,16 +59,16 @@ include waypoint_trajectory_generator/CMakeFiles/demo_node.dir/flags.make
 
 waypoint_trajectory_generator/CMakeFiles/demo_node.dir/app/demo_node.cpp.o: waypoint_trajectory_generator/CMakeFiles/demo_node.dir/flags.make
 waypoint_trajectory_generator/CMakeFiles/demo_node.dir/app/demo_node.cpp.o: ../waypoint_trajectory_generator/app/demo_node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object waypoint_trajectory_generator/CMakeFiles/demo_node.dir/app/demo_node.cpp.o"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/demo_node.dir/app/demo_node.cpp.o -c /home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object waypoint_trajectory_generator/CMakeFiles/demo_node.dir/app/demo_node.cpp.o"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/demo_node.dir/app/demo_node.cpp.o -c /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp
 
 waypoint_trajectory_generator/CMakeFiles/demo_node.dir/app/demo_node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/demo_node.dir/app/demo_node.cpp.i"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp > CMakeFiles/demo_node.dir/app/demo_node.cpp.i
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp > CMakeFiles/demo_node.dir/app/demo_node.cpp.i
 
 waypoint_trajectory_generator/CMakeFiles/demo_node.dir/app/demo_node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/demo_node.dir/app/demo_node.cpp.s"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp -o CMakeFiles/demo_node.dir/app/demo_node.cpp.s
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/app/demo_node.cpp -o CMakeFiles/demo_node.dir/app/demo_node.cpp.s
 
 # Object files for target demo_node
 demo_node_OBJECTS = \
@@ -125,8 +125,8 @@ waypoint_trajectory_generator/demo_node: /usr/lib/x86_64-linux-gnu/libboost_syst
 waypoint_trajectory_generator/demo_node: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 waypoint_trajectory_generator/demo_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 waypoint_trajectory_generator/demo_node: waypoint_trajectory_generator/CMakeFiles/demo_node.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable demo_node"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/demo_node.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable demo_node"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/demo_node.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 waypoint_trajectory_generator/CMakeFiles/demo_node.dir/build: waypoint_trajectory_generator/demo_node
@@ -134,10 +134,10 @@ waypoint_trajectory_generator/CMakeFiles/demo_node.dir/build: waypoint_trajector
 .PHONY : waypoint_trajectory_generator/CMakeFiles/demo_node.dir/build
 
 waypoint_trajectory_generator/CMakeFiles/demo_node.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && $(CMAKE_COMMAND) -P CMakeFiles/demo_node.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator && $(CMAKE_COMMAND) -P CMakeFiles/demo_node.dir/cmake_clean.cmake
 .PHONY : waypoint_trajectory_generator/CMakeFiles/demo_node.dir/clean
 
 waypoint_trajectory_generator/CMakeFiles/demo_node.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator/CMakeFiles/demo_node.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_trajectory_generator/CMakeFiles/demo_node.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : waypoint_trajectory_generator/CMakeFiles/demo_node.dir/depend
 

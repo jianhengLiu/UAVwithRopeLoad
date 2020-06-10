@@ -46,10 +46,10 @@ RM = /home/chrisliu/software/clion-2020.1.2/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include waypoint_generator/CMakeFiles/waypoint_generator.dir/depend.make
@@ -62,16 +62,16 @@ include waypoint_generator/CMakeFiles/waypoint_generator.dir/flags.make
 
 waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o: waypoint_generator/CMakeFiles/waypoint_generator.dir/flags.make
 waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o: ../waypoint_generator/src/waypoint_generator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_generator && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o -c /home/chrisliu/桌面/quadcopter_ws/src/waypoint_generator/src/waypoint_generator.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_generator && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o -c /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_generator/src/waypoint_generator.cpp
 
 waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.i"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/桌面/quadcopter_ws/src/waypoint_generator/src/waypoint_generator.cpp > CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.i
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_generator/src/waypoint_generator.cpp > CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.i
 
 waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.s"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/桌面/quadcopter_ws/src/waypoint_generator/src/waypoint_generator.cpp -o CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.s
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_generator && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_generator/src/waypoint_generator.cpp -o CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.s
 
 # Object files for target waypoint_generator
 waypoint_generator_OBJECTS = \
@@ -105,8 +105,8 @@ devel/lib/waypoint_generator/waypoint_generator: /usr/lib/x86_64-linux-gnu/libbo
 devel/lib/waypoint_generator/waypoint_generator: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 devel/lib/waypoint_generator/waypoint_generator: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 devel/lib/waypoint_generator/waypoint_generator: waypoint_generator/CMakeFiles/waypoint_generator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../devel/lib/waypoint_generator/waypoint_generator"
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_generator && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/waypoint_generator.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../devel/lib/waypoint_generator/waypoint_generator"
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_generator && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/waypoint_generator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 waypoint_generator/CMakeFiles/waypoint_generator.dir/build: devel/lib/waypoint_generator/waypoint_generator
@@ -114,10 +114,10 @@ waypoint_generator/CMakeFiles/waypoint_generator.dir/build: devel/lib/waypoint_g
 .PHONY : waypoint_generator/CMakeFiles/waypoint_generator.dir/build
 
 waypoint_generator/CMakeFiles/waypoint_generator.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_generator && $(CMAKE_COMMAND) -P CMakeFiles/waypoint_generator.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_generator && $(CMAKE_COMMAND) -P CMakeFiles/waypoint_generator.dir/cmake_clean.cmake
 .PHONY : waypoint_generator/CMakeFiles/waypoint_generator.dir/clean
 
 waypoint_generator/CMakeFiles/waypoint_generator.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/waypoint_generator /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_generator /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/waypoint_generator/CMakeFiles/waypoint_generator.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_generator /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_generator /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/waypoint_generator/CMakeFiles/waypoint_generator.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : waypoint_generator/CMakeFiles/waypoint_generator.dir/depend
 

@@ -120,9 +120,9 @@ int main(int argc, char **argv)
     _wp_path_vis_pub = nh.advertise<visualization_msgs::Marker>("vis_waypoint_path", 1);
 
 
-    double massQuadcopter = 1;
+    double massQuadcopter = 0.52;
     controller.initializeParameter(massQuadcopter);
-    trajectoryGeneratorWaypoint.init(1, 1);
+    trajectoryGeneratorWaypoint.init(3, 4);
     double startTime = ros::Time::now().toSec();
     while (ros::ok())
     {
@@ -144,28 +144,22 @@ int main(int argc, char **argv)
                 std_msgs::Float64MultiArray revsArray;
                 revsArray.data = {revs.x(), revs.y(), revs.z(), revs.w()};
                 pubRotorRevs.publish(revsArray);
-            } else{
-                t = trajectoryGeneratorWaypoint._totalTime-0.001;
-                Eigen::Vector3d inputDesiredPos = trajectoryGeneratorWaypoint.getTrajectoryStates(t,0);
-                Eigen::Vector3d inputDesiredVel = trajectoryGeneratorWaypoint.getTrajectoryStates(t,1);
-                Eigen::Vector3d inputDesiredAcc = trajectoryGeneratorWaypoint.getTrajectoryStates(t,2);
-                Eigen::Vector3d inputDesiredJerk = trajectoryGeneratorWaypoint.getTrajectoryStates(t,3);
-                Eigen::Vector4d revs = controller.getRevs(inputDesiredPos,inputDesiredVel,inputDesiredAcc,inputDesiredJerk);
-                std_msgs::Float64MultiArray revsArray;
-                revsArray.data = {revs.x(), revs.y(), revs.z(), revs.w()};
-                pubRotorRevs.publish(revsArray);
             }
+            //若想要无人机停在最后位置取消注释
+//            else{
+//                t = trajectoryGeneratorWaypoint._totalTime-0.001;
+//                Eigen::Vector3d inputDesiredPos = trajectoryGeneratorWaypoint.getTrajectoryStates(t,0);
+//                Eigen::Vector3d inputDesiredVel = trajectoryGeneratorWaypoint.getTrajectoryStates(t,1);
+//                Eigen::Vector3d inputDesiredAcc = trajectoryGeneratorWaypoint.getTrajectoryStates(t,2);
+//                Eigen::Vector3d inputDesiredJerk = trajectoryGeneratorWaypoint.getTrajectoryStates(t,3);
+//                Eigen::Vector4d revs = controller.getRevs(inputDesiredPos,inputDesiredVel,inputDesiredAcc,inputDesiredJerk);
+//                std_msgs::Float64MultiArray revsArray;
+//                revsArray.data = {revs.x(), revs.y(), revs.z(), revs.w()};
+//                pubRotorRevs.publish(revsArray);
+//            }
 
         }
-//        else
-//        {
-//            Eigen::Vector4d revs = controller.getRevs();
-//            std_msgs::Float64MultiArray revsArray;
-//            revsArray.data = {revs.x(), revs.y(), revs.z(), revs.w()};
-//            pubRotorRevs.publish(revsArray);
-//        }
 
-//        controller.updatePastStates();
         loop_rate.sleep();
         spinner.start();
     }

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/librviz_plugins.pdb"
-  "/home/chrisliu/桌面/quadcopter_ws/devel/lib/librviz_plugins.so"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/librviz_plugins.pdb"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/devel/lib/librviz_plugins.so"
   "CMakeFiles/rviz_plugins.dir/src/goal_tool.cpp.o"
   "CMakeFiles/rviz_plugins.dir/src/moc_goal_tool.cpp.o"
   "CMakeFiles/rviz_plugins.dir/src/pose_tool.cpp.o"

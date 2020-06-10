@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/include/trajectory_generator_waypoint.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/include/trajectory_generator_waypoint.h
 Eigen/Eigen
 -
 vector
@@ -16,9 +16,9 @@ math.h
 visualization_msgs/Marker.h
 -
 
-/home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/src/trajectory_generator_waypoint.cpp
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/src/trajectory_generator_waypoint.cpp
 ../include/trajectory_generator_waypoint.h
-/home/chrisliu/桌面/quadcopter_ws/src/waypoint_trajectory_generator/include/trajectory_generator_waypoint.h
+/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/waypoint_trajectory_generator/include/trajectory_generator_waypoint.h
 stdio.h
 -
 ros/ros.h

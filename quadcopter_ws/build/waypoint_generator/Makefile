@@ -51,10 +51,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/build
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -140,14 +140,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/桌面/quadcopter_ws/build/CMakeFiles /home/chrisliu/桌面/quadcopter_ws/build/waypoint_generator/CMakeFiles/progress.marks
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/桌面/quadcopter_ws/build/CMakeFiles 0
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/CMakeFiles /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/waypoint_generator/CMakeFiles/progress.marks
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/clean
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/clean
 .PHONY : clean
 
 # The main clean target
@@ -157,22 +157,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/preinstall
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/preinstall
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 waypoint_generator/CMakeFiles/waypoint_generator.dir/rule:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/CMakeFiles/waypoint_generator.dir/rule
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f CMakeFiles/Makefile2 waypoint_generator/CMakeFiles/waypoint_generator.dir/rule
 .PHONY : waypoint_generator/CMakeFiles/waypoint_generator.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ waypoint_generator: waypoint_generator/CMakeFiles/waypoint_generator.dir/rule
 
 # fast build rule for target.
 waypoint_generator/fast:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/build
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/build
 .PHONY : waypoint_generator/fast
 
 src/waypoint_generator.o: src/waypoint_generator.cpp.o
@@ -191,7 +191,7 @@ src/waypoint_generator.o: src/waypoint_generator.cpp.o
 
 # target to build an object file
 src/waypoint_generator.cpp.o:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.o
 .PHONY : src/waypoint_generator.cpp.o
 
 src/waypoint_generator.i: src/waypoint_generator.cpp.i
@@ -200,7 +200,7 @@ src/waypoint_generator.i: src/waypoint_generator.cpp.i
 
 # target to preprocess a source file
 src/waypoint_generator.cpp.i:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.i
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.i
 .PHONY : src/waypoint_generator.cpp.i
 
 src/waypoint_generator.s: src/waypoint_generator.cpp.s
@@ -209,7 +209,7 @@ src/waypoint_generator.s: src/waypoint_generator.cpp.s
 
 # target to generate assembly for a file
 src/waypoint_generator.cpp.s:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.s
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(MAKE) -f waypoint_generator/CMakeFiles/waypoint_generator.dir/build.make waypoint_generator/CMakeFiles/waypoint_generator.dir/src/waypoint_generator.cpp.s
 .PHONY : src/waypoint_generator.cpp.s
 
 # Help Target
@@ -240,6 +240,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/chrisliu/桌面/quadcopter_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

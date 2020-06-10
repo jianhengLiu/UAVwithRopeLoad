@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/chrisliu/桌面/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp" "/home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o"
+  "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/flightController/src/trajectory_generator_waypoint_f.cpp" "/home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/flightController/CMakeFiles/trajectory_generator_f.dir/src/trajectory_generator_waypoint_f.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

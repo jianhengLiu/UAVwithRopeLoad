@@ -43,10 +43,10 @@ RM = /home/chrisliu/software/clion-2020.1.2/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chrisliu/桌面/quadcopter_ws/src
+CMAKE_SOURCE_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug
 
 # Utility rule file for visualization_msgs_generate_messages_lisp.
 
@@ -63,10 +63,10 @@ rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build: vis
 .PHONY : rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
 
 rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/clean:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/rviz_plugins && $(CMAKE_COMMAND) -P CMakeFiles/visualization_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/rviz_plugins && $(CMAKE_COMMAND) -P CMakeFiles/visualization_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/clean
 
 rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/depend:
-	cd /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/桌面/quadcopter_ws/src /home/chrisliu/桌面/quadcopter_ws/src/rviz_plugins /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/rviz_plugins /home/chrisliu/桌面/quadcopter_ws/src/cmake-build-debug/rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/rviz_plugins /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/rviz_plugins /home/chrisliu/UAVwithRopeLoad/quadcopter_ws/src/cmake-build-debug/rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rviz_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/depend
 
