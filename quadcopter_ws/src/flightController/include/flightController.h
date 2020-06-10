@@ -1,4 +1,4 @@
-//
+/
 // Created by chrisliu on 2020/2/26.
 //
 
@@ -22,6 +22,10 @@ public:
 
     // 无人机质量
     double massQuadcopter;
+    // 无人机质量
+    double massPayload;
+    // 绳子长度
+    double length;
     // 差分中的时间变量
     double dt;
      bool first_time = true;
@@ -40,9 +44,32 @@ public:
 
     // 机身速度
     Eigen::Vector3d cVelocityBody;
-
     // 机身加速度
     Eigen::Vector3d accelerationBody;
+//    欧拉角(Z-Y-X，即RPY)
+    Eigen::Vector3d eulerAngle;
+
+    Eigen::Vector3d cPositionPayload;
+    Eigen::Vector3d pPositionPayload;
+    Eigen::Vector3d ppPositionPayload;
+
+    Eigen::Vector3d cVelocityPayload;
+    Eigen::Vector3d cAccelerationPayload;
+
+//    cVector = p = 机体到负载的向量
+    Eigen::Vector3d cVector;
+    Eigen::Vector3d pVector;
+//    机体到负载的向量差分
+    Eigen::Vector3d cVectorD;
+
+    Eigen::Vector3d cCalculateVector;
+    Eigen::Vector3d pCalculateVector;
+//    机体到负载的向量差分
+    Eigen::Vector3d cCalculateVectorD;
+
+    Eigen::Matrix3d cCalculateR;
+    Eigen::Matrix3d pCalculateR;
+
 
     /**
     * @brief 期望参数
@@ -84,7 +111,12 @@ public:
     * @param None
     * @retval None
     */
-    void initializeParameter(double inputMassQuadcopter);
+    void initializeParameter(double inputMassQuadcopter,double inputMassPayload,double inputLength);
+    /**
+     * @brief 更新负载状态
+     * @param inputPositionPayload
+     */
+    void updatePayloadStates(Eigen::Vector3d inputPositionPayload);
     /**
     * @brief 更新无人机状态
     * @param None
@@ -109,6 +141,11 @@ public:
                             Eigen::Vector3d inputDesiredAcc,
                             Eigen::Vector3d inputDesiredJerk);
 
+    Eigen::Vector4d getRevs_Payload(Eigen::Vector3d inputDesiredPos,
+                            Eigen::Vector3d inputDesiredVel,
+                            Eigen::Vector3d inputDesiredAcc,
+                            Eigen::Vector3d inputDesiredJerk);
+
 
 private:
     /**
@@ -118,20 +155,42 @@ private:
     */
     Eigen::Vector3d getVectorD(Eigen::Vector3d cVector, Eigen::Vector3d pVector);
     /**
+     * 求差差分
+     * @param cVector
+     * @param pVector
+     * @param ppVector
+     * @return
+     */
+    Eigen::Vector3d getVectorDD(Eigen::Vector3d cVector, Eigen::Vector3d pVector, Eigen::Vector3d ppVector);
+
+
+
+    /**
     * @brief 反对称阵到向量
     * @param None
     * @retval None
     */
     Eigen::Vector3d antisymmetricMatrixToVector(Eigen::Matrix3d antisymmetricMatrix);
     /**
+     * @brief 向量到反对称阵
+     * @param vector
+     * @return
+     */
+    Eigen::Matrix3d vectorToAntisymmetricMatrix(Eigen::Vector3d vector);
+    /**
     * @brief 分配拉力
     * @param None
     * @retval None
     */
-
     Eigen::Vector4d getAllocatedRevs(double Force, Eigen::Vector3d Moment);
 
-    Eigen::Vector3d payloadPosController()
+    void payloadPosController(Eigen::Vector3d inputDesiredPos,
+                                         Eigen::Vector3d inputDesiredVel);
+    Eigen::Vector3d e_ixL = Eigen::Vector3d(0,0,0);
+
+    void payloadAttitudeController();
+
+    void QuadcopterAttitudeController();
 };
 
 

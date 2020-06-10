@@ -7,11 +7,24 @@
 #include "iostream"
 using namespace std;
 
-void PayloadController::initializeParameter(double inputMassQuadcopter)
+void PayloadController::initializeParameter(double inputMassQuadcopter,double inputMassPayload,double inputLength)
 {
     massQuadcopter = inputMassQuadcopter;
+    massPayload = inputMassPayload;
+    length = inputLength;
     dt = 0.001;
     cDesiredPositionBody.Zero();
+}
+
+void PayloadController::updatePayloadStates(Eigen::Vector3d inputPositionPayload)
+{
+//TODO：没有初始化负载状态
+    ppPositionPayload = pPositionPayload;
+    pPositionPayload = cPositionPayload;
+    cPositionPayload = inputPositionPayload;
+
+    cVelocityPayload = getVectorD(cPositionPayload,pPositionPayload);
+    cAccelerationPayload = getVectorDD(cPositionPayload,pPositionPayload,ppPositionPayload);
 }
 
 void PayloadController::updatePastStates()
@@ -46,11 +59,26 @@ Eigen::Vector3d PayloadController::getVectorD(Eigen::Vector3d cVector, Eigen::Ve
     return (cVector - pVector)/(dt);
 }
 
+Eigen::Vector3d
+PayloadController::getVectorDD(Eigen::Vector3d cVector, Eigen::Vector3d pVector, Eigen::Vector3d ppVector)
+{
+    return (cVector - 2 * pVector + ppVector)/dt/dt;
+}
+
 Eigen::Vector3d PayloadController::antisymmetricMatrixToVector(Eigen::Matrix3d antisymmetricMatrix)
 {
     Eigen::Vector3d vector(antisymmetricMatrix(7), antisymmetricMatrix(2), antisymmetricMatrix(3));
 
     return vector;
+}
+
+Eigen::Matrix3d PayloadController::vectorToAntisymmetricMatrix(Eigen::Vector3d vector)
+{
+    Eigen::Matrix3d antisymmetricMatrix;
+    antisymmetricMatrix << 0, -vector.z(), vector.y(),
+            vector.z(), 0, -vector.x(),
+            -vector.y(), vector.x(), 0;
+    return antisymmetricMatrix;
 }
 
 Eigen::Vector4d PayloadController::getAllocatedRevs(double Force, Eigen::Vector3d Moment)
@@ -309,4 +337,89 @@ Eigen::Vector4d PayloadController::getRevs(Eigen::Vector3d inputDesiredPos,
     Eigen::Vector4d revs = getAllocatedRevs(u1, moment);
 
     return revs;
+}
+
+Eigen::Vector4d PayloadController::getRevs_Payload(Eigen::Vector3d inputDesiredPos,
+                                           Eigen::Vector3d inputDesiredVel,
+                                           Eigen::Vector3d inputDesiredAcc,
+                                           Eigen::Vector3d inputDesiredJerk)
+{
+    /**
+     * payloadPosController
+     */
+    pVector = cVector;
+    Eigen::Vector3d zI(0, 0, 1);
+    cVector = -(cAccelerationPayload+9.8*zI)/(cAccelerationPayload+9.8*zI).norm();
+    cVectorD = getVectorD(cVector,pVector);
+
+    Eigen::Vector3d e_xL = cPositionPayload - inputDesiredPos;
+    Eigen::Vector3d e_dxL = cVelocityPayload - inputDesiredVel;
+    e_ixL += e_xL;
+
+    const Eigen::Vector3d k_x = Eigen::Vector3d(3, 3, 2);
+    const Eigen::Vector3d k_v = Eigen::Vector3d(0.8, 0.8, 1);
+    const Eigen::Vector3d k_i = Eigen::Vector3d(0.8, 0.8, 1);
+    Eigen::Vector3d A = (massPayload+massQuadcopter)*(-e_xL.cwiseProduct(k_x)-e_dxL.cwiseProduct(k_v)-e_ixL.cwiseProduct(k_i))
+                        +(massPayload+massQuadcopter)*(cAccelerationPayload+9.8*zI)+massQuadcopter*length*cVectorD.dot(cVectorD)*cVector;
+
+    pCalculateVector = cCalculateVector;
+    cCalculateVector = -A/A.norm();
+    cCalculateVectorD = getVectorD(cCalculateVector,pCalculateVector);
+
+    /**
+     * payloadAttitudeController
+     */
+    Eigen::Vector3d e_p = vectorToAntisymmetricMatrix(cVector)^2*cCalculateVector;
+    Eigen::Vector3d e_dp = cVectorD - (cCalculateVector.cross(cCalculateVectorD).cross(cVector));
+
+    const Eigen::Vector3d k_p = Eigen::Vector3d(3, 3, 2);
+    const Eigen::Vector3d k_p_d = Eigen::Vector3d(0.8, 0.8, 1);
+    Eigen::Vector3d F = massQuadcopter*length*(-vectorToAntisymmetricMatrix(cVector)^2*cCalculateVector);
+
+    Eigen::Vector3d b_3c = F/F.norm();
+//    中间坐标系
+    Eigen::Vector3d c_1c(cos(eulerAngle(0)),sin(eulerAngle(0)));
+    pCalculateR = cCalculateR;
+    cCalculateR.col(0) = ((b_3c.cross(c_1c))/(b_3c.cross(c_1c)).norm()).cross(b_3c);
+    cCalculateR.col(1) = ((b_3c.cross(c_1c))/(b_3c.cross(c_1c)).norm());
+    cCalculateR.col(2) = b_3c;
+
+    Eigen::Matrix3d cCalculateR_D = (cCalculateR-pCalculateR)/dt;
+
+    Eigen::Matrix3d caculateOmega_head = cCalculateR.transpose()*cCalculateR_D;
+    /**
+     * QuadcopterAttitudeController
+     */
+}
+
+void PayloadController::payloadPosController(Eigen::Vector3d inputDesiredPos,
+                                                        Eigen::Vector3d inputDesiredVel)
+{
+    pVector = cVector;
+    Eigen::Vector3d zI(0, 0, 1);
+    cVector = -(cAccelerationPayload+9.8*zI)/(cAccelerationPayload+9.8*zI).norm();
+    cVectorD = getVectorD(cVector,pVector);
+
+    Eigen::Vector3d e_xL = cPositionPayload - inputDesiredPos;
+    Eigen::Vector3d e_dxL = cVelocityPayload - inputDesiredVel;
+    e_ixL += e_xL;
+
+    const Eigen::Vector3d k_x = Eigen::Vector3d(3, 3, 2);
+    const Eigen::Vector3d k_v = Eigen::Vector3d(0.8, 0.8, 1);
+    const Eigen::Vector3d k_i = Eigen::Vector3d(0.8, 0.8, 1);
+    Eigen::Vector3d A = (massPayload+massQuadcopter)*(-e_xL.cwiseProduct(k_x)-e_dxL.cwiseProduct(k_v)-e_ixL.cwiseProduct(k_i))
+                        +(massPayload+massQuadcopter)*(cAccelerationPayload+9.8*zI)+massQuadcopter*length*cVectorD.dot(cVectorD)*cVector;
+
+    pCalculateVector = cCalculateVector;
+    cCalculateVector = -A/A.norm();
+    cCalculateVectorD = getVectorD(cCalculateVector,pCalculateVector);
+
+}
+
+void payloadAttitudeController(){
+
+}
+
+void QuadcopterAttitudeController(){
+
 }

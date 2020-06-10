@@ -75,7 +75,15 @@ void callbackImu(const sensor_msgs::ImuConstPtr &imu)
     controller.accelerationBody = linearAcceleration;
     controller.cAngularVelocity_body = omega;
     controller.rotationMatrix_BuW = quaternion.toRotationMatrix();
+//    四元数转欧拉角(Z-Y-X，即RPY)
+    controller.eulerAngle=quaternion.matrix().eulerAngles(2,1,0);
 
+}
+
+void callbackPayload(const geometry_msgs::TwistConstPtr &payload)
+{
+    Eigen::Vector3d cVector_body = Eigen::Vector3d(payload->linear.x, payload->linear.y, payload->linear.z);
+    controller.updatePayloadStates(cVector_body);
 }
 
 void callbackTarget(const geometry_msgs::PoseConstPtr &pose)
@@ -106,14 +114,16 @@ int main(int argc, char **argv)
 
     ros::Subscriber subIMU = nh.subscribe("/imu", 1, callbackImu);
     ros::Subscriber subOdometry = nh.subscribe("/odom", 1, callbackOdometry);
+    //    使用仿真返回的负载位置
+    ros::Subscriber subPayloadPosition = nh.subscribe("/payload", 1, callbackPayload);
+
+    //订阅路径节点
+    _way_pts_sub = nh.subscribe("/waypoint_generator/waypoints", 1, rcvWaypointsCallBack);//("waypoints", 1,rcvWaypointsCallBack);//
 
     //多线程订阅
     ros::AsyncSpinner spinner(4); // Use 4 threads
 
     ros::Publisher pubRotorRevs = nh.advertise<std_msgs::Float64MultiArray>("/rotorRevs", 1);
-
-    //订阅路径节点
-    _way_pts_sub = nh.subscribe("/waypoint_generator/waypoints", 1, rcvWaypointsCallBack);//("waypoints", 1,rcvWaypointsCallBack);//
 
     //发布可视化节点
     _wp_traj_vis_pub = nh.advertise<visualization_msgs::Marker>("vis_trajectory", 1);
@@ -121,7 +131,9 @@ int main(int argc, char **argv)
 
 
     double massQuadcopter = 0.52;
-    controller.initializeParameter(massQuadcopter);
+    double massPayload = 0.2;
+    double length = 0.9;
+    controller.initializeParameter(massQuadcopter,massPayload,length);
     trajectoryGeneratorWaypoint.init(3, 4);
     double startTime = ros::Time::now().toSec();
     while (ros::ok())
